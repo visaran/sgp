@@ -1,9 +1,6 @@
 <?php
 class ReservationsController extends AppController {
 	public function index() {
-		
-        //var_dump($this->Auth->user('admin'));
-        //exit();
 
         if ($this->Auth->user('admin')) {
             

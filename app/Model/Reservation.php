@@ -1,34 +1,16 @@
 <?php
 class Reservation extends AppModel{
 
-	/*public $validate = array(
-    	'data_reserva' => array(
-            'born' => array (
-                'rule' => array ('date', 'dmy'),
-                'message' => 'Selecione uma data valida.'
-            ),
-
-            'valida' => array ( //corrigir aqui
-                'rule' => array ('validaLimiteReservas', 3),
-                'message' => 'Sem projetores para essa data e horário'
-            ),
-        ),
-        'horario_reserva_1' => array(
-        	'rule' => array('boolean')
-        ),
-
-        'horario_reserva_2' => array(
-            'rule' => array('boolean')
-        )
-    );*/
-
-
     var $name = 'Reservation';
     var $validate = array(
         'data_reserva' => array(
 
-            'valida' => array(
-                'rule' => array('validaLimiteReservas', 2),
+            'valida_horario_1' => array(
+                'rule' => array('validaLimiteReservas', 'horario_reserva_1', 2),
+                'message' => 'Impossivel reservar!'
+            ),
+            'valida_horario_2' => array(
+                'rule' => array('validaLimiteReservas', 'horario_reserva_2', 2),
                 'message' => 'Impossivel reservar!'
             ),
             'data_valida' => array(
@@ -55,9 +37,16 @@ class Reservation extends AppModel{
         ),
     );
 
-    public function validaLimiteReservas($reserva, $limite) {
-        $quantidade_existente = $this->find('count', array('conditions' => $reserva, 'recursive' => -1));
-        return $quantidade_existente <= $limite;
+    public function validaLimiteReservas($reserva, $horario, $limite) {
+
+        if (isset($reserva[$horario]) and $reserva[$horario]) {
+            $quantidade_existente = $this->find('count', array('conditions' => array('data_reserva' => $reserva['data_reserva'], $horario => true), 'recursive' => -1));
+            return $quantidade_existente <= $limite;
+        }
+        else{
+            return true;
+        }
+        
     }
 
     public function beforeSave($options = array()) {

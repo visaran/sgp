@@ -1,7 +1,7 @@
 <?php
 class AdministratorsController extends AppController {
 
-    //public $uses = array('Reservation');
+    public $uses = array('Reservation');
 
     public function index() {
        
@@ -12,7 +12,9 @@ class AdministratorsController extends AppController {
 
     }
 
-    public function list(){
+    public function reservations_list(){
+
+        $this->set('reservations', $this->Reservation->find('all'));
 
     }
 
