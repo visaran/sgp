@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html>
-<head></head>
+<head>
+	<?php 
+		echo $this->Html->css('bootstrap.min');
+		echo $this->Html->script('bootstrap.min');
+	?>
+</head>
 
 <body>
 	<?php echo $this->fetch('content'); ?>
