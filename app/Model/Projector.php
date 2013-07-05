@@ -1,5 +1,5 @@
 <?php
-class Projector extends AppModel {
+	class Projector extends AppModel {
 
-}
+	}
 ?>
