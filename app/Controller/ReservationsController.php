@@ -1,7 +1,7 @@
 <?php
 class ReservationsController extends AppController {
 	public function index() {
-
+		
 
 	}
 
