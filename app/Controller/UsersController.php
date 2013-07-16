@@ -26,6 +26,8 @@ class UsersController extends AppController {
             exit();
             $this->redirect($this->Auth->redirect());
         } else {
+            debug('opa! falhou');
+            exit();
             $this->Session->setFlash(__('Usuário ou senha inválidos, tente novamente.'));
         }
     }
