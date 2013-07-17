@@ -12,13 +12,21 @@
   <link rel="stylesheet" href="/resources/demos/style.css" />
   <script>
   $(function() {
-    $( "#datepicker" ).datepicker();
+    $( "#datepicker" ).datepicker({
+        dateFormat: 'dd/mm/yy',
+        //showButtonPanel:true
+        //showOn:"button",
+        //buttonImage:"calendario.png",
+        //buttonImageOnly:true
+      });
+
   });
   </script>
 </head>
 <body>
  
-<!--<p>Data: <input type="text" id="datepicker" /></p>-->
+<p>Data: <input type="text" id="datepicker" /></p>
+
 <div id="datepicker">
 	<?php echo $this->Form->input('data_reserva'); ?>
  
