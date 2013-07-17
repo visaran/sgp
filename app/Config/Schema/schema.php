@@ -23,7 +23,8 @@ class AppSchema extends CakeSchema {
 	public $reservations = array(
 		'id' => array('type' => 'integer', 'null' => false, 'default' => null, 'length' => 10, 'key' => 'primary'),
 		'data_reserva' => array('type' => 'date', 'null' => true, 'default' => null),
-		'horario_reserva' => array('type' => 'integer', 'null' => true, 'default' => null),
+		'horario_reserva_1' => array('type' => 'boolean', 'null' => true, 'default' => null),
+		'horario_reserva_2' => array('type' => 'boolean', 'null' => true, 'default' => null),
 		'created' => array('type' => 'datetime', 'null' => true, 'default' => null),
 		'modified' => array('type' => 'datetime', 'null' => true, 'default' => null),
 		'indexes' => array(
