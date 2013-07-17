@@ -25,10 +25,9 @@
 </head>
 <body>
  
-<p>Data: <input type="text" id="datepicker" /></p>
+<p>Data: <input type="text" id="datepicker" name="data_reserva" /></p>
 
-<div id="datepicker">
-	<?php echo $this->Form->input('data_reserva'); ?>
+	<!--<?php echo $this->Form->input('data_reserva'); ?>-->
  
 </body>
 </html>
