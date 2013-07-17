@@ -13,7 +13,7 @@
   <script>
   $(function() {
     $( "#datepicker" ).datepicker({
-        dateFormat: 'dd/mm/yy',
+        dateFormat: 'dd/mm/yy'
         //showButtonPanel:true
         //showOn:"button",
         //buttonImage:"calendario.png",
