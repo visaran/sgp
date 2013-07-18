@@ -1,4 +1,4 @@
-<div align='center'>
+<div class='container' align='center'>
 <h1> Reserva de Projetores </h1>
 
 <hr>
