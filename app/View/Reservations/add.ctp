@@ -13,7 +13,7 @@
   <script>
   $(function() {
     $( "#datepicker" ).datepicker({
-        dateFormat: 'dd/mm/yy'
+        dateFormat: 'yy/mm/dd'
         //showButtonPanel:true
         //showOn:"button",
         //buttonImage:"calendario.png",
@@ -33,8 +33,14 @@
 </html>
 
 <div>
-<p>Data: <input type="text" id="datepicker" name="data_reserva" /></p>
+<!--<p>Data: <input type="text" id="datepicker" name="data_reserva" /></p>-->
 
+<?php
+echo $this->Form->input('data_reserva', array(
+    'label' => 'Data:',
+    'type'=>'text',
+  'id'=>'datepicker'));
+?>
 <?php
 echo $this->Form->input('horario_reserva_1', array(
     'label' => 'Primeiro horário (19:25 às 21:05)',

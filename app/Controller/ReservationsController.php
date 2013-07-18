@@ -13,6 +13,8 @@ class ReservationsController extends AppController {
         	//$this->request->data['Reservation']['user_id'] = $this->Auth->user('id'); //Added this line
         if (!empty($this->data)) {
         	$this->data['Reservation']['user_id'] = $this->Auth->user('id');
+        	//debug($this->Auth->user('id')); exit();
+        	//debug($this->data);exit();
             $this->Reservation->save($this->data);
             $this->Session->setFlash('Reserva feita com sucesso!');
             $this->redirect('add');
