@@ -7,17 +7,23 @@ class ReservationsController extends AppController {
 
 	function add() {
 
-		$this->set('reservations', $this->Reservation->find('all'));
+			//$this->set('reservations', $this->Reservation->find('all'));
 
-			if (!empty($this->data)) {
+			/*if (!empty($this->data)) {
 				$this->Reservation->save($this->data);
 				$this->redirect('add');
-			}
+			}*/
+		$this->set('reservations', $this->Reservation->find('all'));
+
+			//if ($this->request->is('reservation')) {
+        		//$this->request->data['Reservation']['user_id'] = $this->Auth->user('id'); //Added this line
+        		if (!empty($this->data)) {
+        			$this->Reservation->save($this->data);
+        			$this->request->data['Reservation']['user_id'] = $this->Auth->user('id');
+            		$this->Session->setFlash('Reserva feita com sucesso!');
+            		$this->redirect('add');
+        		}
+    		
 	}
 }
 ?>
-
-
-
-
-
