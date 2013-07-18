@@ -24,6 +24,8 @@
   </script>
 </head>
 <body>
+
+<div class='container' align='center'><?php echo $this->Html->link('Sair', array('controller' => 'users', 'action'=>'logout')); ?></div>
  
 <p>Data: <input type="text" id="datepicker" name="data_reserva" /></p>
 
@@ -46,7 +48,7 @@ echo $this->Form->input('horario_reserva_2', array(
 <?php echo $this->Form->end(); ?>
 
 
-<table>
+<table class="table table-bordered">
 
 	<tr>
 		<th>Data da reserva</th> 

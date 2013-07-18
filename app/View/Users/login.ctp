@@ -3,8 +3,10 @@
 <?php echo $this->Form->create('User');?>
     <fieldset>
         <legend><?php echo __('Tela de Autenticação do Professor'); ?></legend>
-        <?php echo $this->Form->input('username');
-        echo $this->Form->input('password');
+        <?php echo $this->Form->input('username', array(
+    	'label' => 'Registro Docente:'));
+        echo $this->Form->input('password', array(
+    	'label' => 'Senha:'));
     ?>
     </fieldset>
 <?php echo $this->Form->end(__('Entrar'));?>
