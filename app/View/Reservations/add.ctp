@@ -25,14 +25,15 @@
 </head>
 <body>
 
-<div class='container' align='center'><?php echo $this->Html->link('Sair', array('controller' => 'users', 'action'=>'logout')); ?></div>
- 
-<p>Data: <input type="text" id="datepicker" name="data_reserva" /></p>
+<div class='container' align='right'><?php echo $this->Html->link('Sair', array('controller' => 'users', 'action'=>'logout')); ?></div>
 
 	<!--<?php echo $this->Form->input('data_reserva'); ?>-->
  
 </body>
 </html>
+
+<div>
+<p>Data: <input type="text" id="datepicker" name="data_reserva" /></p>
 
 <?php
 echo $this->Form->input('horario_reserva_1', array(
@@ -46,6 +47,8 @@ echo $this->Form->input('horario_reserva_2', array(
 
 <?php echo $this->Form->submit('Reservar'); ?>
 <?php echo $this->Form->end(); ?>
+
+</div>
 
 
 <table class="table table-bordered">
