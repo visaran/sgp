@@ -2,8 +2,10 @@
 
 class ReservationTest extends CakeTestCase{
 	
-	function testExemplo(){
-		$this->assertEqual('pedro', 'pedro');
+	function teste(){
+		if ($this->request->data->'data_reserva'){
+			dateFormat: 'dd/mm/yy';
+		} 
 	}
 }
 
