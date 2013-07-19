@@ -3,9 +3,9 @@ App::uses('AuthComponent', 'Controller/Component');
 class User extends AppModel {
     public $name = 'User';
     public $validate = array(
-        'username' => array(
+            'username' => array(
             'required' => array(
-                'rule' => array('notEmpty'),
+             'rule' => array('notEmpty'),
                 'message' => 'Digite o registro!'
             )
         ),
