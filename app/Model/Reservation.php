@@ -5,8 +5,6 @@ class Reservation extends AppModel{
     	'data_reserva' => array(
             'rule'    => array('date', 'dmy'),
             'message' => 'Selecione uma data valida.',
-            'required' => true,
-            'allowEmpty' => false
         ),
         'horario_reserva_1' => array(
         	'rule' => array('boolean'),

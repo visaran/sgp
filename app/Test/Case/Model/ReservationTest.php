@@ -36,6 +36,21 @@ class ReservationTest extends CakeTestCase{
 		$this->Reservation->beforeSave();
 		$this->assertEquals('2002-02-15', $this->Reservation->data['Reservation']['data_reserva']);
 	}
+
+	function testReservationHorarioReservaUmShouldBeBoolean() {
+		$this->Reservation->set(array('Reservation' => array('horario_reserva_1' => 1)));
+		$this->assertTrue($this->Reservation->validates());
+	}
+
+	function testReservationHorarioReservaUmShouldNotBeString() {
+		$this->Reservation->set(array('Reservation' => array('horario_reserva_1' => 'risos')));
+		$this->assertFalse($this->Reservation->validates());
+	}
+
+	function testReservationHorarioReservaDoisShouldBeBoolean() {
+		$this->Reservation->set(array('Reservation' => array('horario_reserva_1' => 1)));
+		$this->assertTrue($this->Reservation->validates());
+	}
 }
 
 ?>
