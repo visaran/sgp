@@ -61,6 +61,7 @@ class ReservationTest extends CakeTestCase{
 		$reserva = array('Reservation' => array('horario_reserva_1' => true, 'horario_reserva_2' => true, 'data_reserva' => '23/07/2013'));
 		$this->assertFalse($this->Reservation->validaLimiteReservas($reserva, 1));
 	}
+	
 
 }
 
