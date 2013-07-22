@@ -62,7 +62,6 @@ class ReservationTest extends CakeTestCase{
 		$this->assertFalse($this->Reservation->validaLimiteReservas($reserva, 1));
 	}
 
-
 }
 
 ?>
