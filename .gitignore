@@ -19,4 +19,6 @@
 Icon?
 ehthumbs.db
 Thumbs.db
+
 .ruby-version
+.vagrant

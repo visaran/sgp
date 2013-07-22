@@ -20,14 +20,14 @@ class ReservationTest extends CakeTestCase{
 		$this->assertFalse($this->Reservation->validates());
 	}
 
-	function testReservationDateShouldBeInDatabaseFormat(){		
+	function testReservationDateShouldBeInPortugueseFormat(){		
 		$reserva = array('Reservation' => array('data_reserva' => '15/02/2002'));
 		$this->Reservation->set($reserva);
-		$this->assertFalse($this->Reservation->validates());
+		$this->assertTrue($this->Reservation->validates());
 
 		$reserva = array('Reservation' => array('data_reserva' => '2002-02-14'));
 		$this->Reservation->set($reserva);
-		$this->assertTrue($this->Reservation->validates());
+		$this->assertFalse($this->Reservation->validates());
 	}
 
 	function testReservationShouldConvertsDataReservaToDatabaseFormatBeforeSave() {
