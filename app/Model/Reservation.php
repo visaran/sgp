@@ -12,6 +12,12 @@ class Reservation extends AppModel{
         	'allowEmpty' => false
         ),
 
+        'horario_reserva_2' => array(
+            'rule' => array('boolean'),
+            'required' => true,
+            'allowEmpty' => false
+        ),
+
     );
 
     public function beforeSave($options = array()) {
@@ -23,5 +29,11 @@ class Reservation extends AppModel{
 	public function isOwnedBy($reservation, $user) {
 		return $this->field('id', array('id' => $reservation, 'user_id' => $user)) === $reservation;
 	}
+
+    function validaLimiteReservas($reserva, $limite) {
+        $quantidade_existente = $this->find('count', array('conditions' => array('data_reserva' => $reserva['Reservation']['data_reserva'], 'horario_reserva_1' => true), 'recursive' => -1));
+        return $quantidade_existente < $limite;
+    }
+
 } 
 ?>
