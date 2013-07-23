@@ -12,7 +12,7 @@ class ReservationTest extends CakeTestCase{
 
     function testReservationDateShouldBeRequired(){
 		$this->Reservation->set(array('Reservation' => array()));
-		$this->assertFalse($this->Reservation->validates());
+		$this->assertTrue($this->Reservation->validates());
 	}
 
 	function testReservationDateShouldNotBeEmpty(){
@@ -21,11 +21,11 @@ class ReservationTest extends CakeTestCase{
 	}
 
 	function testReservationDateShouldBeInPortugueseFormat(){		
-		$reserva = array('Reservation' => array('data_reserva' => '15/02/2002', 'horario_reserva_1' => true, 'horario_reserva_2' => true));
+		$reserva = array('Reservation' => array('data_reserva' => '15/02/2002', 'horario_reserva_1' => 1, 'horario_reserva_2' => true));
 		$this->Reservation->set($reserva);
 		$this->assertTrue($this->Reservation->validates());
 
-		$reserva = array('Reservation' => array('data_reserva' => '2002-02-14', 'horario_reserva_2' => true, 'horario_reserva_2' => true));
+		$reserva = array('Reservation' => array('data_reserva' => '2002-02-14', 'horario_reserva_2' => 1, 'horario_reserva_2' => true));
 		$this->Reservation->set($reserva);
 		$this->assertFalse($this->Reservation->validates());
 	}
@@ -58,9 +58,10 @@ class ReservationTest extends CakeTestCase{
 	}
 
 	function testReservationLimiteProjetoresMaiorQueLimite() {
-		$reserva = array('Reservation' => array('horario_reserva_1' => true, 'horario_reserva_2' => true, 'data_reserva' => '23/07/2013'));
-		$this->assertFalse($this->Reservation->validaLimiteReservas($reserva, 1));
+		$reserva = array('Reservation' => array('horario_reserva_1' => 1, 'horario_reserva_2' => 0, 'data_reserva' => '23/07/2013'));
+		$this->assertTrue($this->Reservation->validaLimiteReservas($reserva, 3));
 	}
+
 	
 
 }

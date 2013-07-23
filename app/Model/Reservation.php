@@ -8,17 +8,16 @@ class Reservation extends AppModel{
         ),
         'horario_reserva_1' => array(
         	'rule' => array('boolean'),
-        	'required' => true,
-        	'allowEmpty' => false
         ),
 
         'horario_reserva_2' => array(
             'rule' => array('boolean'),
-            'required' => true,
-            'allowEmpty' => false
         ),
 
-    );
+        'reserva' => array(
+            'rule' => array ('validaLimiteReservas', 1),
+            'message' => 'Nao há mais projetores disponível nesta data e horário')
+    );  
 
     public function beforeSave($options = array()) {
     	parent::beforeSave();
@@ -36,8 +35,8 @@ class Reservation extends AppModel{
 		return $this->field('id', array('id' => $reservation, 'user_id' => $user)) === $reservation;
 	}
 
-    function validaLimiteReservas($reserva, $limite) {
-        $quantidade_existente = $this->find('all', array('conditions' => array('data_reserva' => $reserva['Reservation']['data_reserva'], 'horario_reserva_1' => true), 'recursive' => -1));
+    public function validaLimiteReservas($reserva, $limite) {
+        $quantidade_existente = $this->find('count', array('conditions' => array('data_reserva' => $reserva['Reservation']['data_reserva'], 'horario_reserva_1' => 1), 'recursive' => -1));
         return $quantidade_existente < $limite;
     }
 
