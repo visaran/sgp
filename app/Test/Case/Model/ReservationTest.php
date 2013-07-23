@@ -7,7 +7,7 @@ class ReservationTest extends CakeTestCase{
 
 	public function setUp() {
 		parent::setUp();
-		$this->Reservation = new Reservation();
+        $this->Reservation = ClassRegistry::init('Reservation');
     }
 
     function testReservationDateShouldBeRequired(){
