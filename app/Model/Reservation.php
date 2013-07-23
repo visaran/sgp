@@ -8,17 +8,16 @@ class Reservation extends AppModel{
         ),
         'horario_reserva_1' => array(
         	'rule' => array('boolean'),
-        	'required' => true,
-        	'allowEmpty' => false
         ),
 
         'horario_reserva_2' => array(
             'rule' => array('boolean'),
-            'required' => true,
-            'allowEmpty' => false
         ),
 
-    );
+        'reserva' => array(
+            'rule' => array ('validaLimiteReservas', 20),
+            'message' => 'Nao há mais projetores disponível nesta data e horário')
+    );  
 
     public function beforeSave($options = array()) {
     	parent::beforeSave();
