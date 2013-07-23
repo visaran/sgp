@@ -9,8 +9,6 @@ class ReservationsController extends AppController {
 
 		$this->set('reservations', $this->Reservation->find('all'));
 
-		//if ($this->request->is('reservation')) {
-        	//$this->request->data['Reservation']['user_id'] = $this->Auth->user('id'); //Added this line
         if (!empty($this->data)) {
             $this->request->data['Reservation']['user_id'] = $this->Auth->user('id');
             $this->Reservation->save($this->request->data);
@@ -19,19 +17,5 @@ class ReservationsController extends AppController {
         }
     		
 	}
-
-    public function isAuthorized($user) {
-        if (!parent::isAuthorized($user)) {
-            if ($this->action === 'add') {
-                // All registered users can add posts
-                return true;
-            }
-            if (in_array($this->action, array('edit', 'delete'))) {
-                $postId = $this->request->params['pass'][0];
-                return $this->Post->isOwnedBy($postId, $user['id']);
-            }
-        }
-        return false;
-    }
 }
 ?>

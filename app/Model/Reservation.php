@@ -3,21 +3,24 @@ class Reservation extends AppModel{
 
 	public $validate = array(
     	'data_reserva' => array(
-            'rule'    => array('date', 'dmy'),
-            'message' => 'Selecione uma data valida.',
+            'born' => array (
+                'rule' => array ('date', 'dmy'),
+                'message' => 'Selecione uma data valida.'
+            ),
+
+            'validaLimiteReservas' => array (
+                'rule' => array ('validaLimiteReservas', 3),
+                'message' => 'Sem projetores para essa data e horário'
+            ),
         ),
         'horario_reserva_1' => array(
-        	'rule' => array('boolean'),
+        	'rule' => array('boolean')
         ),
 
         'horario_reserva_2' => array(
-            'rule' => array('boolean'),
-        ),
-
-        'reserva' => array(
-            'rule' => array ('validaLimiteReservas', 1),
-            'message' => 'Nao há mais projetores disponível nesta data e horário')
-    );  
+            'rule' => array('boolean')
+        )
+    );
 
     public function beforeSave($options = array()) {
     	parent::beforeSave();
