@@ -1,17 +1,17 @@
 <?php
 class Reservation extends AppModel{
 
-	public $validate = array(
+	/*public $validate = array(
     	'data_reserva' => array(
             'born' => array (
                 'rule' => array ('date', 'dmy'),
                 'message' => 'Selecione uma data valida.'
             ),
 
-            /*'validaLimiteReservas' => array ( //corrigir aqui
+            'valida' => array ( //corrigir aqui
                 'rule' => array ('validaLimiteReservas', 3),
                 'message' => 'Sem projetores para essa data e horário'
-            ),*/
+            ),
         ),
         'horario_reserva_1' => array(
         	'rule' => array('boolean')
@@ -20,7 +20,22 @@ class Reservation extends AppModel{
         'horario_reserva_2' => array(
             'rule' => array('boolean')
         )
+    );*/
+
+
+    //var $name = 'Reservation';
+
+    var $validate = array(
+        'data_reserva' => array(
+            'rule' => array('limitDuplicates', 4),
+            'message' => 'Impossivel reservar!'
+        )
     );
+
+    function limitDuplicates($data, $limite) {
+        $quantidade_existente = $this->find('count', array('conditions' => $data, 'recursive' => -1));
+        return $quantidade_existente < $limite;
+    }
 
     public function beforeSave($options = array()) {
     	parent::beforeSave();
