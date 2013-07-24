@@ -8,10 +8,10 @@ class Reservation extends AppModel{
                 'message' => 'Selecione uma data valida.'
             ),
 
-            'validaLimiteReservas' => array (
+            /*'validaLimiteReservas' => array ( //corrigir aqui
                 'rule' => array ('validaLimiteReservas', 3),
                 'message' => 'Sem projetores para essa data e horário'
-            ),
+            ),*/
         ),
         'horario_reserva_1' => array(
         	'rule' => array('boolean')

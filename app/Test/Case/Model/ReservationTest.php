@@ -21,11 +21,11 @@ class ReservationTest extends CakeTestCase{
 	}
 
 	function testReservationDateShouldBeInPortugueseFormat(){		
-		$reserva = array('Reservation' => array('data_reserva' => '15/02/2002', 'horario_reserva_1' => 1, 'horario_reserva_2' => true));
+		$reserva = array('Reservation' => array('data_reserva' => '15/02/2002', 'horario_reserva_1' => 1, 'horario_reserva_2' => 1));
 		$this->Reservation->set($reserva);
 		$this->assertTrue($this->Reservation->validates());
 
-		$reserva = array('Reservation' => array('data_reserva' => '2002-02-14', 'horario_reserva_2' => 1, 'horario_reserva_2' => true));
+		$reserva = array('Reservation' => array('data_reserva' => '2002-02-14', 'horario_reserva_2' => 1, 'horario_reserva_2' => 1));
 		$this->Reservation->set($reserva);
 		$this->assertFalse($this->Reservation->validates());
 	}
