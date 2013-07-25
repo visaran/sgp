@@ -27,14 +27,34 @@ class Reservation extends AppModel{
 
     var $validate = array(
         'data_reserva' => array(
-            'rule' => array('limitDuplicates', 4),
-            'message' => 'Impossivel reservar!'
+
+            'valida' => array(
+                'rule' => array('validaLimiteReservas', 4),
+                'message' => 'Impossivel reservar!'
+            ),
+            'born' => array(
+                'rule' => array('date', 'dmy'),
+                'message' => 'Selecione uma data valida.'
+            ),
+            'notEmpty' => array(
+                'rule' => 'notEmpty',
+                'message' => 'Selecione uma data valida.'
+            ),
+
+        ),
+
+        'horario_reserva_1' => array(
+            'rule' => array('boolean')
+        ),
+
+        'horario_reserva_2' => array(
+            'rule' => array('boolean')
         )
     );
 
-    function limitDuplicates($data, $limite) {
-        $quantidade_existente = $this->find('count', array('conditions' => $data, 'recursive' => -1));
-        return $quantidade_existente < $limite;
+    function validaLimiteReservas($reserva, $limite) {
+        $quantidade_existente = $this->find('count', array('conditions' => $reserva, 'recursive' => -1));
+        return $quantidade_existente <= $limite;
     }
 
     public function beforeSave($options = array()) {
@@ -53,10 +73,10 @@ class Reservation extends AppModel{
 		return $this->field('id', array('id' => $reservation, 'user_id' => $user)) === $reservation;
 	}
 
-    public function validaLimiteReservas($reserva, $limite) {
+    /*public function validaLimiteReservas($reserva, $limite) {
         $quantidade_existente = $this->find('count', array('conditions' => array('data_reserva' => $reserva['Reservation']['data_reserva'], 'horario_reserva_1' => 1), 'recursive' => -1));
         return $quantidade_existente <= $limite;
-    }
+    }*/
 
 } 
 ?>
