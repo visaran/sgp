@@ -58,13 +58,13 @@ class ReservationTest extends CakeTestCase{
 	}
 
 	function testReservationLimiteProjetoresMaiorQueLimite() {
-		$reserva = array('Reservation' => array('horario_reserva_1' => 1, 'horario_reserva_2' => 0, 'data_reserva' => '23/07/2013'));
-		$this->assertFalse($this->Reservation->validates($reserva, 2));
+		$reserva = array('horario_reserva_1' => 1, 'horario_reserva_2' => 0, 'data_reserva' => '23/07/2013');
+		$this->assertFalse($this->Reservation->validaLimiteReservas($reserva, 2));
 	}
 
 	function testReservationLimiteProjetoresMenorOuIgualQueLimite() {
-		$reserva = array('Reservation' => array('horario_reserva_1' => 1, 'horario_reserva_2' => 0, 'data_reserva' => '23/07/2013'));
-		$this->assertTrue($this->Reservation->validates($reserva, 4));
+		$reserva = array('horario_reserva_1' => 1, 'horario_reserva_2' => 0, 'data_reserva' => '23/07/2013');
+		$this->assertTrue($this->Reservation->validaLimiteReservas($reserva, 4));
 	}
 
 }

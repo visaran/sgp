@@ -32,9 +32,9 @@ class Reservation extends AppModel{
                 'rule' => array('validaLimiteReservas', 4),
                 'message' => 'Impossivel reservar!'
             ),
-            'born' => array(
+            'data_valida' => array(
                 'rule' => array('date', 'dmy'),
-                'message' => 'Selecione uma data valida.'
+                'message' => 'Selecione uma data valida.',
             ),
             'notEmpty' => array(
                 'rule' => 'notEmpty',
@@ -52,7 +52,7 @@ class Reservation extends AppModel{
         )
     );
 
-    function validaLimiteReservas($reserva, $limite) {
+    public function validaLimiteReservas($reserva, $limite) {
         $quantidade_existente = $this->find('count', array('conditions' => $reserva, 'recursive' => -1));
         return $quantidade_existente <= $limite;
     }
