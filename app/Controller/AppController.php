@@ -37,9 +37,16 @@ class AppController extends Controller {
         'Session',
         'Auth' => array(
             'loginRedirect' => array('controller' => 'reservations', 'action' => 'index'),
-            'logoutRedirect' => array('controller' => 'users', 'action' => 'login')
+            'logoutRedirect' => array('controller' => 'users', 'action' => 'login'),
         )
     );
+
+    public function isAuthorized($user) {
+        if (isset($user['admin'])) {
+            return true; //Admin pode acessar todas actions
+        }
+        return false; // O resto não pode
+}
 
     //function beforeFilter() {
       //  $this->Auth->allow('index', 'view');

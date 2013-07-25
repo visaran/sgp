@@ -23,8 +23,7 @@ class Reservation extends AppModel{
     );*/
 
 
-    //var $name = 'Reservation';
-
+    var $name = 'Reservation';
     var $validate = array(
         'data_reserva' => array(
 
@@ -34,7 +33,7 @@ class Reservation extends AppModel{
             ),
             'data_valida' => array(
                 'rule' => array('date', 'dmy'),
-                'message' => 'Selecione uma data valida.',
+                'message' => 'Selecione uma data valida.'
             ),
             'notEmpty' => array(
                 'rule' => 'notEmpty',
@@ -44,12 +43,16 @@ class Reservation extends AppModel{
         ),
 
         'horario_reserva_1' => array(
-            'rule' => array('boolean')
+            'boolean' => array(
+                'rule' => array('boolean')
+            ),
         ),
 
         'horario_reserva_2' => array(
-            'rule' => array('boolean')
-        )
+            'boolean' => array(
+                'rule' => array('boolean')
+            ),
+        ),
     );
 
     public function validaLimiteReservas($reserva, $limite) {

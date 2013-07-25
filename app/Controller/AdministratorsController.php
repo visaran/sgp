@@ -5,9 +5,9 @@ class AdministratorsController extends AppController {
         
     }
     
-    public function list() {
+    /*public function list() {
 
-    }
+    }*/
 
     public function login() {
         if ($this->Auth->login()) {
