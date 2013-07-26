@@ -5,9 +5,9 @@ class AdministratorsController extends AppController {
         
     }
     
-    /*public function list() {
-
-    }*/
+    public function add() {
+        $this->set('reservations', $this->Reservation->find('all'));
+    }
 
     public function login() {
         if ($this->Auth->login()) {

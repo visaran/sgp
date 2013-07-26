@@ -28,7 +28,7 @@ class Reservation extends AppModel{
         'data_reserva' => array(
 
             'valida' => array(
-                'rule' => array('validaLimiteReservas', 4),
+                'rule' => array('validaLimiteReservas', 2),
                 'message' => 'Impossivel reservar!'
             ),
             'data_valida' => array(
