@@ -35,9 +35,21 @@ class AppController extends Controller {
 	
     public $components = array(
         'Session',
+
         'Auth' => array(
-            'loginRedirect' => array('controller' => 'reservations', 'action' => 'index'),
-            'logoutRedirect' => array('controller' => 'users', 'action' => 'login'),
+            'loginRedirect' => array(
+                'admin' => 0,
+                'controller' => 'reservations', 
+                'action' => 'index'),
+
+            'adminRedirect' => array(
+                'admin' => 1,
+                'controller' => 'administrators', 
+                'action' => 'index'),
+
+            'logoutRedirect' => array(
+                'controller' => 'users', 
+                'action' => 'login'),
         )
     );
 
