@@ -1,26 +1,22 @@
 <?php
 class AdministratorsController extends AppController {
 
+    //public $uses = array('Reservation');
+
     public function index() {
-        
+       
+        if (!$this->Auth->user('admin')) {
+            
+            $this->redirect(array('controller' => 'reservations', 'action' => 'index'));
+        }
+
     }
     
-    /*public function list() {
+    public function list() {
 
-    }*/
+        //$this->set('reservations', $this->Reservation->find('all'));
 
-    public function login() {
-        if ($this->Auth->login()) {
-            debug($this->Auth->redirect());
-            
-            $this->redirect($this->Auth->redirect());
-        } else {
-            $this->Session->setFlash(__('Registro ou senha inválidos, tente novamente.'));
-        }
     }
 
-    public function logout() {
-        $this->redirect($this->Auth->logout());
-    }
 }
 ?>
