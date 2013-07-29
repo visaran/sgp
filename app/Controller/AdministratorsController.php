@@ -11,10 +11,8 @@ class AdministratorsController extends AppController {
         }
 
     }
-    
-    public function list() {
 
-        //$this->set('reservations', $this->Reservation->find('all'));
+    public function list(){
 
     }
 
