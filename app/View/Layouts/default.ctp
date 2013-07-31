@@ -6,7 +6,6 @@
 		echo $this->Html->css('bootstrap.min');
 		echo $this->Html->script('jquery-1.9.1.js');
 		echo $this->Html->script('jquery-ui.js');
-
 	?>
 </head>
 

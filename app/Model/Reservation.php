@@ -5,12 +5,8 @@ class Reservation extends AppModel{
     var $validate = array(
         'data_reserva' => array(
 
-            'valida_horario_1' => array(
-                'rule' => array('validaLimiteReservas', 'horario_reserva_1', 2),
-                'message' => 'Impossivel reservar!'
-            ),
-            'valida_horario_2' => array(
-                'rule' => array('validaLimiteReservas', 'horario_reserva_2', 2),
+            'valida_horario' => array(
+                'rule' => array('validaDataHorario', 4),
                 'message' => 'Impossivel reservar!'
             ),
             'data_valida' => array(
@@ -37,16 +33,30 @@ class Reservation extends AppModel{
         ),
     );
 
-    public function validaLimiteReservas($reserva, $horario, $limite) {
+    public function validaDataHorario($reserva, $limite){
+        //debug($reserva); exit();
+        $reserva = $this->data['Reservation'];
 
-        if (isset($reserva[$horario]) and $reserva[$horario]) {
-            $quantidade_existente = $this->find('count', array('conditions' => array('data_reserva' => $reserva['data_reserva'], $horario => true), 'recursive' => -1));
-            return $quantidade_existente <= $limite;
+        if((isset($reserva['horario_reserva_1']) and ($reserva['horario_reserva_1'] == false) and 
+            isset($reserva['horario_reserva_2']) and ($reserva['horario_reserva_2'] == false))){
+            return false;
         }
-        else{
-            return true;
+
+        if(isset($reserva['horario_reserva_1']) and $reserva['horario_reserva_1'] == true){
+            $quantidade = $this->find('count', array('conditions' => array('data_reserva' => $reserva['data_reserva'], 'horario_reserva_1' => true)));
+            if ($quantidade >= $limite){
+                return false;    
+            }
         }
         
+        if(isset($reserva['horario_reserva_2']) and $reserva['horario_reserva_2'] == true){
+            $quantidade = $this->find('count', array('conditions' => array('data_reserva' => $reserva['data_reserva'], 'horario_reserva_2' => true)));
+            if ($quantidade >= $limite){
+                return false;    
+            }
+        }   
+                  
+        return true;
     }
 
     public function beforeSave($options = array()) {
@@ -55,7 +65,7 @@ class Reservation extends AppModel{
 	    return true;
 	}
 
-    public function beforeFind(array $queryData) {
+    public function beforeFind($queryData = array()) {
         if (isset($queryData['conditions']['data_reserva']))
             $queryData['conditions']['data_reserva'] = implode('-',array_reverse(explode('/',$queryData['conditions']['data_reserva'])));
         return $queryData;
