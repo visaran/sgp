@@ -37,7 +37,10 @@ class Reservation extends AppModel{
 
         $reserva = $this->data['Reservation'];
         
-        $quantidade_user = $this->find('count', array('conditions' => array('data_reserva' => $reserva['data_reserva'], 'horario_reserva_1' => $reserva['horario_reserva_1'], 'user_id' => $reserva['user_id'])));
+        $quantidade_user = $this->find('count', array('conditions' => array('data_reserva' => $reserva['data_reserva'], 
+            'horario_reserva_1' => $reserva['horario_reserva_1'],
+            'horario_reserva_2' => $reserva['horario_reserva_2'], 
+            'user_id' => $reserva['user_id'])));
         if ($quantidade_user < 1) {
             if((isset($reserva['horario_reserva_1']) and ($reserva['horario_reserva_1'] == false) and 
                 isset($reserva['horario_reserva_2']) and ($reserva['horario_reserva_2'] == false))){
@@ -45,14 +48,25 @@ class Reservation extends AppModel{
             }
 
             if(isset($reserva['horario_reserva_1']) and $reserva['horario_reserva_1'] == true){
-                $quantidade = $this->find('count', array('conditions' => array('data_reserva' => $reserva['data_reserva'], 'horario_reserva_1' => true)));
+                $quantidade = $this->find('count', array('conditions' => array('data_reserva' => $reserva['data_reserva'], 
+                    'horario_reserva_1' => true)));
+                if ($quantidade >= $limite){
+                    return false;    
+                }
+            }
+
+            if((isset($reserva['horario_reserva_1']) and ($reserva['horario_reserva_1'] == true) and
+                isset($reserva['horario_reserva_2']) and ($reserva['horario_reserva_2'] == false))){
+                $quantidade = $this->find('count', array('conditions' => array('data_reserva' => $reserva['data_reserva'], 
+                    'horario_reserva_1' => true)));
                 if ($quantidade >= $limite){
                     return false;    
                 }
             }
             
             if(isset($reserva['horario_reserva_2']) and $reserva['horario_reserva_2'] == true){
-                $quantidade = $this->find('count', array('conditions' => array('data_reserva' => $reserva['data_reserva'], 'horario_reserva_2' => true)));
+                $quantidade = $this->find('count', array('conditions' => array('data_reserva' => $reserva['data_reserva'], 
+                    'horario_reserva_2' => true)));
                 if ($quantidade >= $limite){
                     return false;    
                 }
