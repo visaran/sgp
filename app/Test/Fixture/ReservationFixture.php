@@ -26,7 +26,7 @@ class ReservationFixture extends CakeTestFixture {
         ),
         array(
         	'id' => 4, 
-        	'data_reserva' => '2013-07-27', 
+        	'data_reserva' => '2013-07-28', 
         	'horario_reserva_1' => 1, 
         	'horario_reserva_2' => 0, 
         	'user_id' => 1
