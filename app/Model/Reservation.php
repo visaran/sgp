@@ -6,7 +6,7 @@ class Reservation extends AppModel{
         'data_reserva' => array(
 
             'valida_horario' => array(
-                'rule' => array('validaDataHorario', 4),
+                'rule' => array('validaDataHorario', 2),
                 'message' => 'Impossivel reservar!'
             ),
             'data_valida' => array(
@@ -34,29 +34,33 @@ class Reservation extends AppModel{
     );
 
     public function validaDataHorario($reserva, $limite){
-        //debug($reserva); exit();
+
         $reserva = $this->data['Reservation'];
-
-        if((isset($reserva['horario_reserva_1']) and ($reserva['horario_reserva_1'] == false) and 
-            isset($reserva['horario_reserva_2']) and ($reserva['horario_reserva_2'] == false))){
-            return false;
-        }
-
-        if(isset($reserva['horario_reserva_1']) and $reserva['horario_reserva_1'] == true){
-            $quantidade = $this->find('count', array('conditions' => array('data_reserva' => $reserva['data_reserva'], 'horario_reserva_1' => true)));
-            if ($quantidade >= $limite){
-                return false;    
+        
+        $quantidade_user = $this->find('count', array('conditions' => array('data_reserva' => $reserva['data_reserva'], 'horario_reserva_1' => $reserva['horario_reserva_1'], 'user_id' => $reserva['user_id'])));
+        if ($quantidade_user < 1) {
+            if((isset($reserva['horario_reserva_1']) and ($reserva['horario_reserva_1'] == false) and 
+                isset($reserva['horario_reserva_2']) and ($reserva['horario_reserva_2'] == false))){
+                return false;
             }
+
+            if(isset($reserva['horario_reserva_1']) and $reserva['horario_reserva_1'] == true){
+                $quantidade = $this->find('count', array('conditions' => array('data_reserva' => $reserva['data_reserva'], 'horario_reserva_1' => true)));
+                if ($quantidade >= $limite){
+                    return false;    
+                }
+            }
+            
+            if(isset($reserva['horario_reserva_2']) and $reserva['horario_reserva_2'] == true){
+                $quantidade = $this->find('count', array('conditions' => array('data_reserva' => $reserva['data_reserva'], 'horario_reserva_2' => true)));
+                if ($quantidade >= $limite){
+                    return false;    
+                }
+            }  
+            return true;   
         }
         
-        if(isset($reserva['horario_reserva_2']) and $reserva['horario_reserva_2'] == true){
-            $quantidade = $this->find('count', array('conditions' => array('data_reserva' => $reserva['data_reserva'], 'horario_reserva_2' => true)));
-            if ($quantidade >= $limite){
-                return false;    
-            }
-        }   
-                  
-        return true;
+        return false;
     }
 
     public function beforeSave($options = array()) {
