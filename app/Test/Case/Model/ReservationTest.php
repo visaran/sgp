@@ -16,16 +16,16 @@ class ReservationTest extends CakeTestCase{
 	}
 
 	function testReservationDateShouldNotBeEmpty(){
-		$this->Reservation->set(array('Reservation' => array('data_reserva' => '')));
+		$this->Reservation->set(array('Reservation' => array('data_reserva' => '', 'horario_reserva_1' => 1, 'user_id' => 1)));
 		$this->assertFalse($this->Reservation->validates());
 	}
 
 	function testReservationDateShouldBeInPortugueseFormat(){		
-		$reserva = array('Reservation' => array('data_reserva' => '15/02/2002', 'horario_reserva_1' => 1, 'horario_reserva_2' => 1));
+		$reserva = array('Reservation' => array('data_reserva' => '15/02/2002', 'horario_reserva_1' => 1, 'horario_reserva_2' => 1, 'user_id' => 1));
 		$this->Reservation->set($reserva);
 		$this->assertTrue($this->Reservation->validates());
 
-		$reserva = array('Reservation' => array('data_reserva' => '2002-02-14', 'horario_reserva_2' => 1, 'horario_reserva_2' => 1));
+		$reserva = array('Reservation' => array('data_reserva' => '2002-02-14', 'horario_reserva_2' => 1, 'horario_reserva_2' => 1, 'user_id' => 1));
 		$this->Reservation->set($reserva);
 		$this->assertFalse($this->Reservation->validates());
 	}
@@ -58,43 +58,43 @@ class ReservationTest extends CakeTestCase{
 	}
 
 	function testReservationDateHorarioUmHorarioDoisChecked(){
-		$reserva = array('data_reserva' => '20/07/2013', 'horario_reserva_1' => 1, 'horario_reserva_2' => 1);
+		$reserva = array('data_reserva' => '20/07/2013', 'horario_reserva_1' => 1, 'horario_reserva_2' => 1, 'user_id' => 1);
 		$this->Reservation->set(array('Reservation' => $reserva));
 		$this->assertTrue($this->Reservation->validaDataHorario($reserva, 1));
 	}
 
 	function testReservationDateHorarioUmHorarioDoisShouldNotBeEmpty(){
-		$reserva = array('data_reserva' => '20/07/2013', 'horario_reserva_1' => 0, 'horario_reserva_2' => 0);
+		$reserva = array('data_reserva' => '20/07/2013', 'horario_reserva_1' => 0, 'horario_reserva_2' => 0, 'user_id' => 1);
 		$this->Reservation->set(array('Reservation' => $reserva));
 		$this->assertFalse($this->Reservation->validaDataHorario($reserva, 1));
 	}
 
 	function testReservationDateHorarioUmUnic(){
-		$reserva = array('data_reserva' => '23/07/2013', 'horario_reserva_1' => 1, 'horario_reserva_2' => 0);
+		$reserva = array('data_reserva' => '23/07/2013', 'horario_reserva_1' => 1, 'horario_reserva_2' => 0, 'user_id' => 1);
 		$this->Reservation->set(array('Reservation' => $reserva));
 		$this->assertFalse($this->Reservation->validaDataHorario($reserva, 1));
 	}
 
 	function testReservationDateHorarioDoisUnic(){
-		$reserva = array('data_reserva' => '23/07/2013', 'horario_reserva_1' => 0, 'horario_reserva_2' => 1);
+		$reserva = array('data_reserva' => '23/07/2013', 'horario_reserva_1' => 0, 'horario_reserva_2' => 1, 'user_id' => 1);
 		$this->Reservation->set(array('Reservation' => $reserva));
 		$this->assertFalse($this->Reservation->validaDataHorario($reserva, 1));
 	}
 
 	function testReservationDateHorarioUmEDoisLimitChecked(){
-		$reserva = array('data_reserva' => '25/07/2013', 'horario_reserva_1' => 1, 'horario_reserva_2' => 1);
+		$reserva = array('data_reserva' => '25/07/2013', 'horario_reserva_1' => 1, 'horario_reserva_2' => 1, 'user_id' => 1);
 		$this->Reservation->set(array('Reservation' => $reserva));
 		$this->assertTrue($this->Reservation->validaDataHorario($reserva, 1));
 	}
 
 	function testReservationDateHorarioUmMenorOuIgualALimite(){
-		$reserva = array('data_reserva' => '27/07/2013', 'horario_reserva_1' => 1, 'horario_reserva_2' => 0);
+		$reserva = array('data_reserva' => '27/07/2013', 'horario_reserva_1' => 1, 'horario_reserva_2' => 0, 'user_id' => 1);
 		$this->Reservation->set(array('Reservation' => $reserva));
-		$this->assertTrue($this->Reservation->validaDataHorario($reserva, 3));
+		$this->assertTrue($this->Reservation->validaDataHorario($reserva, 5));
 	}
 
 	function testReservationDateHorarioUmMaiorQueLimite(){
-		$reserva = array('data_reserva' => '27/07/2013', 'horario_reserva_1' => 1, 'horario_reserva_2' => 0);
+		$reserva = array('data_reserva' => '27/07/2013', 'horario_reserva_1' => 1, 'horario_reserva_2' => 0, 'user_id' => 1);
 		$this->Reservation->set(array('Reservation' => $reserva));
 		$this->assertFalse($this->Reservation->validaDataHorario($reserva, 1));
 	}
@@ -102,7 +102,7 @@ class ReservationTest extends CakeTestCase{
 	function testReservationLimitEachUser(){
 		$reserva = array('data_reserva' => '27/07/2013', 'horario_reserva_1' => 1, 'horario_reserva_2' => 0, 'user_id' => 1);
 		$this->Reservation->set(array('Reservation' => $reserva));
-		$this->assertTrue($this->Reservation->validaDataHorario($reserva, 5));
+		$this->assertFalse($this->Reservation->validaDataHorario($reserva, 5));
 	}
 
 

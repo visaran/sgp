@@ -74,15 +74,5 @@ class Reservation extends AppModel{
             $queryData['conditions']['data_reserva'] = implode('-',array_reverse(explode('/',$queryData['conditions']['data_reserva'])));
         return $queryData;
     }
-
-	public function isOwnedBy($reservation, $user) {
-		return $this->field('id', array('id' => $reservation, 'user_id' => $user)) === $reservation;
-	}
-
-    /*public function validaLimiteReservas($reserva, $limite) {
-        $quantidade_existente = $this->find('count', array('conditions' => array('data_reserva' => $reserva['Reservation']['data_reserva'], 'horario_reserva_1' => 1), 'recursive' => -1));
-        return $quantidade_existente <= $limite;
-    }*/
-
 } 
 ?>
