@@ -2,7 +2,10 @@
   <script>
   $(function() {
     $( "#datepicker" ).datepicker({
-        dateFormat: 'dd/mm/yy'
+        dateFormat: 'dd/mm/yy',
+        maxDate: '15d',
+        minDate: '0',
+        beforeShowDay: $.datepicker.noWeekends
       });
 
   });
