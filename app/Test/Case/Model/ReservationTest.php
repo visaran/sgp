@@ -99,7 +99,7 @@ class ReservationTest extends CakeTestCase{
 		$reserva = array('data_reserva' => '27/07/2013', 'horario_reserva_1' => 1, 'horario_reserva_2' => 0, 
 			'user_id' => 1);
 		$this->Reservation->set(array('Reservation' => $reserva));
-		$this->assertTrue($this->Reservation->validaDataHorario($reserva, 5));
+		$this->assertFalse($this->Reservation->validaDataHorario($reserva, 5));
 	}
 
 	function testReservationDateHorarioUmMaiorQueLimite(){
