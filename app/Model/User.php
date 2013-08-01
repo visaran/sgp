@@ -2,6 +2,11 @@
 App::uses('AuthComponent', 'Controller/Component');
 class User extends AppModel {
     public $name = 'User';
+    public $hasMany = array(
+        'Reservation' => array(
+            'className' => 'Reservation',
+            )
+        );
     public $validate = array(
             'username' => array(
             'required' => array(

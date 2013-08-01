@@ -14,10 +14,10 @@
 		<th>Observação</th>
 	</tr>
 
-	<?php foreach ($reservations as $reservation): ?>
+	<?php foreach ($users as $user): ?>
 		<tr>
-			<td><?php echo $reservation['Reservation']['data_reserva']; ?> </td>
-			<td><?php echo $reservation['Reservation']['user_id']; ?> </td>
+			<td><?php //echo $reservation['Reservation']['data_reserva']; ?> </td>
+			<td><?php echo $user['User']['id']; ?> </td>
 			<td></td>
 			<td>19:25</td>
 			<td></td>
