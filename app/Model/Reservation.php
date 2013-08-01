@@ -7,7 +7,7 @@ class Reservation extends AppModel{
 
             'valida_horario' => array(
                 'rule' => array('validaDataHorario', 2),
-                'message' => 'Impossivel reservar!'
+                'message' => ''
             ),
             'data_valida' => array(
                 'rule' => array('date', 'dmy'),

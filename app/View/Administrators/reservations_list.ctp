@@ -1,3 +1,6 @@
+<h3 align='center'>Lista semanal de reservas de projetores</h3>
+
+
 <table class="table table-bordered">
 
 	<tr>
@@ -14,11 +17,14 @@
 	<?php foreach ($reservations as $reservation): ?>
 		<tr>
 			<td><?php echo $reservation['Reservation']['data_reserva']; ?> </td>
-			<td><?php echo $reservation['Users']['nome']; ?> </td>
+			<td><?php echo $reservation['Reservation']['user_id']; ?> </td>
 			<td></td>
-			<td> </td>
+			<td>19:25</td>
+			<td></td>
+			<td>22:55</td>
+			<td></td>
+			<td></td>
 		</tr>
 	<?php endforeach; ?>
-
 	
 </table>

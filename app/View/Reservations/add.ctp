@@ -1,3 +1,5 @@
+<h2 align="center"> Tela de reserva de Projetores </h2>
+
 <?php echo $this->Form->create('Reservation'); ?>
   <script>
   $(function() {
@@ -11,7 +13,7 @@
   });
   </script>
 
-<div class='container' align='right'><?php echo $this->Html->link('Sair', array('controller' => 'users', 'action'=>'logout')); ?></div>
+<div class='container' align='center'><?php echo $this->Html->link('Sair', array('controller' => 'users', 'action'=>'logout')); ?></div>
 
 
 <?php
@@ -32,6 +34,9 @@ echo $this->Form->input('horario_reserva_2', array(
 
 <?php echo $this->Form->submit('Reservar'); ?>
 <?php echo $this->Form->end(); ?>
+<script>
+    alert("<?php print $message; ?>");
+</script>
 
 
 <table class="table table-bordered">
