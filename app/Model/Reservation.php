@@ -79,6 +79,29 @@ class Reservation extends AppModel{
         
         return false;
     }
+    
+    /*
+
+    public function retornaHorarioLista($reserva) {
+        if(isset($reserva['horario_reserva_1']) and ($reserva['horario_reserva_1']) == true 
+            and ($reserva['horario_reserva_2']) and ($reserva['horario_reserva_2']) == true){
+                $retirada = '19:25';
+                $devolucao = '22:55';
+        }
+
+        else if(isset($reserva['horario_reserva_1']) and ($reserva['horario_reserva_1']) == true 
+            and ($reserva['horario_reserva_2']) and ($reserva['horario_reserva_2']) == false){
+                $retirada = '19:25';
+                $devolucao = '21:05';
+        }
+
+        else if(isset($reserva['horario_reserva_1']) and ($reserva['horario_reserva_1']) == false 
+            and ($reserva['horario_reserva_2']) and ($reserva['horario_reserva_2']) == true){
+                $retirada = '21:15';
+                $devolucao = '22:55';
+        }
+    }
+    */
 
     public function beforeSave($options = array()) {
     	parent::beforeSave();
