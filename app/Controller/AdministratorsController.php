@@ -8,14 +8,19 @@ class AdministratorsController extends AppController {
        
         if (!$this->Auth->user('admin')) {
             
-            $this->redirect(array('controller' => 'reservations', 'action' => 'index'));
+            $this->redirect(
+                array(
+                    'controller' => 'reservations', 'action' => 'index'));
         }
 
     }
 
     public function reservations_list(){
 
-        $this->set('users', $this->User->Reservation->find('all', array('conditions' => array('User.id' == 'Reservation.user_id'))));
+        $this->set('users', $this->User->Reservation->find('all', 
+            array(
+                'conditions' => array('User.id' == 'Reservation.user_id'),
+                'order' => array('Reservation.data_reserva asc'))));
 
     }
 

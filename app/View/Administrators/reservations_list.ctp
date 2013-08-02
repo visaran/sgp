@@ -19,7 +19,7 @@
 			<td><?php echo $user['Reservation']['data_reserva']; ?> </td>
 			<td><?php echo $user['User']['nome']; ?> </td>
 			<td></td>
-			<td>19:25</td>
+			<td><?php echo $user['Reservation']['horario_reserva_1']; ?></td>
 			<td></td>
 			<td>22:55</td>
 			<td></td>

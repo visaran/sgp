@@ -4,7 +4,9 @@ class ReservationsController extends AppController {
 
         if ($this->Auth->user('admin')) {
             
-            $this->redirect(array('controller' => 'administrators', 'action' => 'index'));
+            $this->redirect(
+                array(
+                    'controller' => 'administrators', 'action' => 'index'));
         }
 
 	}
