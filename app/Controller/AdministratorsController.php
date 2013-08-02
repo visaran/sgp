@@ -15,7 +15,7 @@ class AdministratorsController extends AppController {
 
     public function reservations_list(){
 
-        $this->set('users', $this->User->find('all'));
+        $this->set('users', $this->User->Reservation->find('all', array('conditions' => array('User.id' == 'Reservation.user_id'))));
 
     }
 

@@ -2,11 +2,16 @@
 class Reservation extends AppModel{
 
     var $name = 'Reservation';
+
     public $belongsTo = array(
         'User' => array(
             'className' => 'User',
+            'foreign_keys' => 'user_id',
+            'conditions' => array(
+            'User.id = Reservation.user_id'),
             )
         );
+
     var $validate = array(
         'data_reserva' => array(
 

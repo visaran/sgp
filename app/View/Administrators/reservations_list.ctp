@@ -16,8 +16,8 @@
 
 	<?php foreach ($users as $user): ?>
 		<tr>
-			<td><?php //echo $reservation['Reservation']['data_reserva']; ?> </td>
-			<td><?php echo $user['User']['id']; ?> </td>
+			<td><?php echo $user['Reservation']['data_reserva']; ?> </td>
+			<td><?php echo $user['User']['nome']; ?> </td>
 			<td></td>
 			<td>19:25</td>
 			<td></td>

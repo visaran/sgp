@@ -4,7 +4,7 @@ class User extends AppModel {
     public $name = 'User';
     public $hasMany = array(
         'Reservation' => array(
-            'className' => 'Reservation',
+            'className' => 'Reservation'
             )
         );
     public $validate = array(
