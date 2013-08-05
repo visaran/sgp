@@ -34,9 +34,6 @@ echo $this->Form->input('horario_reserva_2', array(
 
 <?php echo $this->Form->submit('Reservar'); ?>
 <?php echo $this->Form->end(); ?>
-<script>
-    alert("<?php print $message; ?>");
-</script>
 
 
 <table class="table table-bordered">
