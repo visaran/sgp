@@ -80,28 +80,36 @@ class Reservation extends AppModel{
         return false;
     }
     
-    /*
+    
+    public function formataHorarioLista($reservas) {
 
-    public function retornaHorarioLista($reserva) {
-        if(isset($reserva['horario_reserva_1']) and ($reserva['horario_reserva_1']) == true 
-            and ($reserva['horario_reserva_2']) and ($reserva['horario_reserva_2']) == true){
-                $retirada = '19:25';
-                $devolucao = '22:55';
+        
+
+        foreach ($reservas as $key=>$reserva) {
+
+            if((isset($reserva['Reservation']['horario_reserva_1'])) and ($reserva['Reservation']['horario_reserva_1']) == true 
+                and (isset($reserva['Reservation']['horario_reserva_2'])) and ($reserva['Reservation']['horario_reserva_2']) == true){
+                    $reservas[$key]['Reservation']['horario_reserva_1'] = '19:25';
+                    $reservas[$key]['Reservation']['horario_reserva_2'] = '22:55';
+            }
+
+            else if((isset($reserva['Reservation']['horario_reserva_1'])) and ($reserva['Reservation']['horario_reserva_1']) == true 
+                and (isset($reserva['Reservation']['horario_reserva_2'])) and ($reserva['Reservation']['horario_reserva_2']) == false){
+                    $reservas[$key]['Reservation']['horario_reserva_1'] = '19:25';
+                    $reservas[$key]['Reservation']['horario_reserva_2'] = '21:05';
+            }
+
+            else if((isset($reserva['Reservation']['horario_reserva_1'])) and ($reserva['Reservation']['horario_reserva_1']) == false 
+                and (isset($reserva['Reservation']['horario_reserva_2'])) and ($reserva['Reservation']['horario_reserva_2']) == true){
+                    $reservas[$key]['Reservation']['horario_reserva_1'] = '21:15';
+                    $reservas[$key]['Reservation']['horario_reserva_2'] = '22:55';
+            }
+
         }
 
-        else if(isset($reserva['horario_reserva_1']) and ($reserva['horario_reserva_1']) == true 
-            and ($reserva['horario_reserva_2']) and ($reserva['horario_reserva_2']) == false){
-                $retirada = '19:25';
-                $devolucao = '21:05';
-        }
-
-        else if(isset($reserva['horario_reserva_1']) and ($reserva['horario_reserva_1']) == false 
-            and ($reserva['horario_reserva_2']) and ($reserva['horario_reserva_2']) == true){
-                $retirada = '21:15';
-                $devolucao = '22:55';
-        }
+        return $reservas;
     }
-    */
+    
 
     public function beforeSave($options = array()) {
     	parent::beforeSave();

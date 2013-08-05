@@ -3,7 +3,7 @@ App::uses("Reservation", "Model");
 
 class ReservationTest extends CakeTestCase{
 	
-	public $fixtures = array('app.reservation');
+	public $fixtures = array('app.reservation', 'app.user');
 
 	public function setUp() {
 		parent::setUp();
