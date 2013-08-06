@@ -19,21 +19,14 @@ class AdministratorsController extends AppController {
 
         $users = $this->User->Reservation->find('all', 
             array(
-                'conditions' => array('User.id' == 'Reservation.user_id'),
-                'order' => array('Reservation.data_reserva asc')));
+                'conditions' => array('User.id' == 'Reservation.user_id', 
+                    'Reservation.data_reserva <=' => date('Y-m-d', strtotime('next Friday'))),
+                'order' => array('Reservation.data_reserva asc'),
+                ));
         
         $users = $this->User->Reservation->formataHorarioLista($users);
 
         $this->set(compact(array('users')));
-        
-
-        /*
-        $this->set('users', $this->User->Reservation->find('all', 
-            array(
-                'conditions' => array('User.id' == 'Reservation.user_id'),
-                'order' => array('Reservation.data_reserva asc'))));
-        */
-
         
     }
 

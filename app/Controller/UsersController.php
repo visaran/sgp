@@ -34,8 +34,15 @@ class UsersController extends AppController {
     public function login() {
         if ($this->Auth->login()) {
             $this->redirect($this->Auth->redirect());
-        } else {
-            $this->Session->setFlash(__('Registro ou senha inválidos, tente novamente.'));
+        } 
+
+        elseif (empty($this->data)) {
+            return;
+        }
+
+        else {
+            $this->Session->setFlash(__('<script> alert("Registro ou senha inválidos, tente novamente."); </script>', true));
+            $this->request->data = null;
         }
     }
 

@@ -46,15 +46,4 @@ class AppController extends Controller {
                 'action' => 'login'),
         )
     );
-
-    /*public function isAuthorized($user) {
-        if (isset($user['admin'])) {
-            return true; //Admin pode acessar todas actions
-        }
-        return false; // O resto não pode
-}
-*/
-    //function beforeFilter() {
-      //  $this->Auth->allow('index', 'view');
-    //}
 }
