@@ -1,4 +1,4 @@
-<h2 align="center"> Tela de reserva de Projetores </h2>
+<h2 align="center"> Tela de Reserva de Projetores </h2>
 
 <div class="container">
 <?php echo $this->Form->create('Reservation'); ?>
@@ -42,3 +42,25 @@
 <?php echo $this->Form->end(); ?>
 
 </div>
+
+<h3 align="center"> Minhas Reservas </h3>
+
+<table class="table table-bordered">
+
+  <tr>
+    <th>Data da reserva</th> 
+    <th>Professor</th>
+    <th>Horário retirada</th>
+    <th>Horário devolução</th>
+  </tr>
+
+  <?php foreach ($users as $user): ?>
+    <tr>
+      <td><?php echo $user['Reservation']['data_reserva']; ?> </td>
+      <td><?php echo $user['User']['nome']; ?> </td>
+      <td><?php echo $user['Reservation']['horario_reserva_1']; ?></td>
+      <td><?php echo $user['Reservation']['horario_reserva_2']; ?></td>
+    </tr>
+  <?php endforeach; ?>
+  
+</table>

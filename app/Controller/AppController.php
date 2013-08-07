@@ -39,7 +39,7 @@ class AppController extends Controller {
         'Auth' => array(
             'loginRedirect' => array(
                 'controller' => 'reservations', 
-                'action' => 'index'),
+                'action' => 'add'),
 
             'logoutRedirect' => array(
                 'controller' => 'users', 
