@@ -1,6 +1,6 @@
 <h2 align="center"> Tela de reserva de Projetores </h2>
 
-<div class="container" align="center" border="3px" solid="#000">
+<div class="container">
 <?php echo $this->Form->create('Reservation'); ?>
   <script>
   $(function() {
@@ -42,21 +42,3 @@
 <?php echo $this->Form->end(); ?>
 
 </div>
-
-
-<table class="table table-bordered">
-
-	<tr>
-		<th>Data da reserva</th> 
-		<th>Primeiro horário</th>
-		<th>Segundo horário</th>
-	</tr>
-
-	<?php foreach ($reservations as $reservation): ?>
-		<tr>
-			<td><?php echo $reservation['Reservation']['data_reserva']; ?> </td>
-			<td><?php echo $reservation['Reservation']['horario_reserva_1']; ?> </td>
-			<td><?php echo $reservation['Reservation']['horario_reserva_2']; ?> </td>
-		</tr>
-		<?php endforeach; ?>
-</table>
