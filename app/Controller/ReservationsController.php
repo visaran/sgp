@@ -20,6 +20,9 @@ class ReservationsController extends AppController {
             if ($this->User->Reservation->save($this->request->data)) {
                 $this->Session->setFlash(__('<script> alert("Reserva realizada com sucesso!"); </script>', true));
             }
+            elseif(empty($this->data)){
+                return;
+            }
             else {
                 $this->Session->setFlash(__('<script> alert("Não há projetores disponíveis nesta data e horário!"); </script>', true));
             }
