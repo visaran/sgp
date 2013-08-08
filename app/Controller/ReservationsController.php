@@ -52,5 +52,19 @@ class ReservationsController extends AppController {
 
     }
 
+    function consutaLista(){
+        $users = $this->User->Reservation->find('all', 
+            array(
+                'conditions' => array(  
+                    'Reservation.data_reserva >=' => date('Y-m-d', strtotime('now'))
+                    ),
+                'order' => array('Reservation.data_reserva asc')
+                ));
+        
+        $users = $this->User->Reservation->formataHorarioLista($users);
+
+        $this->set(compact(array('users')));
+    }
+
 }
 ?>
