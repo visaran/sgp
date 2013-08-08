@@ -41,5 +41,13 @@ class ReservationsController extends AppController {
         $this->set(compact(array('users')));
         
 	}
+
+    function delete ($id){
+
+        $this->User->Reservation->delete($id);
+        $this->redirect('add');
+
+    }
+
 }
 ?>

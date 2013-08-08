@@ -52,6 +52,7 @@
     <th>Professor</th>
     <th>Horário retirada</th>
     <th>Horário devolução</th>
+    <th>Excluir Reserva</th>
   </tr>
 
   <?php foreach ($users as $user): ?>
@@ -60,6 +61,7 @@
       <td><?php echo $user['User']['nome']; ?> </td>
       <td><?php echo $user['Reservation']['horario_reserva_1']; ?></td>
       <td><?php echo $user['Reservation']['horario_reserva_2']; ?></td>
+      <td><?php echo $this->Html->link('Deletar', array('action'=>'delete', $user['Reservation']['id'])); ?></td>
     </tr>
   <?php endforeach; ?>
   
