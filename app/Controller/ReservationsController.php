@@ -15,33 +15,47 @@ class ReservationsController extends AppController {
 	}
 
 	function add() {
-        if (!empty($this->data)) {
-            $this->request->data['Reservation']['user_id'] = $this->Auth->user('id');
-            if ($this->User->Reservation->save($this->request->data)) {
-                $this->Session->setFlash(__('<script> alert("Reserva realizada com sucesso!"); </script>', true));
-            }
-            elseif(empty($this->data)){
-                return;
-            }
-            else {
-                $this->Session->setFlash(__('<script> alert("Não há projetores disponíveis nesta data e horário!"); </script>', true));
-            }
-            $this->request->data = null;
-        }
-        
-        $users = $this->User->Reservation->find('all', 
-            array(
-                'conditions' => array(
-                    'Reservation.user_id' => $this->Auth->user('id'),
-                    'AND' => array(  
-                    'Reservation.data_reserva >=' => date('Y-m-d', strtotime('now')))
-                    ),
-                'order' => array('Reservation.data_reserva asc')
-                ));
-        
-        $users = $this->User->Reservation->formataHorarioLista($users);
 
-        $this->set(compact(array('users')));
+        debug($this->data);
+
+        if(isset($this->data['consultar'])){
+
+            $this->redirect(array('controller' => 'Reservations', 'action' => 'list_view', 
+                            'data_reserva' => $this->data['Reservation']['data_reserva']));
+
+        }
+
+        else{
+
+            if (!empty($this->data)) {
+                $this->request->data['Reservation']['user_id'] = $this->Auth->user('id');
+                if ($this->User->Reservation->save($this->request->data)) {
+                    $this->Session->setFlash(__('<script> alert("Reserva realizada com sucesso!"); </script>', true));
+                }
+                elseif(empty($this->data)){
+                    return;
+                }
+                else {
+                    $this->Session->setFlash(__('<script> alert("Não há projetores disponíveis nesta data e horário!"); </script>', true));
+                }
+                $this->request->data = null;
+            }
+            
+            $users = $this->User->Reservation->find('all', 
+                array(
+                    'conditions' => array(
+                        'Reservation.user_id' => $this->Auth->user('id'),
+                        'AND' => array(  
+                        'Reservation.data_reserva >=' => date('Y-m-d', strtotime('now')))
+                        ),
+                    'order' => array('Reservation.data_reserva asc')
+                    ));
+            
+            $users = $this->User->Reservation->formataHorarioLista($users);
+
+            $this->set(compact(array('users')));
+
+        }
         
 	}
 
@@ -52,18 +66,11 @@ class ReservationsController extends AppController {
 
     }
 
-    function consutaLista(){
-        $users = $this->User->Reservation->find('all', 
-            array(
-                'conditions' => array(  
-                    'Reservation.data_reserva >=' => date('Y-m-d', strtotime('now'))
-                    ),
-                'order' => array('Reservation.data_reserva asc')
-                ));
+    function list_view(){
         
-        $users = $this->User->Reservation->formataHorarioLista($users);
+        $this->Reservation->consultaListaReservasPorData();
 
-        $this->set(compact(array('users')));
+
     }
 
 }

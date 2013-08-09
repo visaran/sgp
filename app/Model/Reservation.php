@@ -109,6 +109,21 @@ class Reservation extends AppModel{
 
         return $reservas;
     }
+
+    public function consultaListaReservasPorData($data_consulta){
+
+        $reservas = $this->User->Reservation->find('all', 
+            array(
+                'conditions' => $data_consulta,
+                'order' => array('Reservation.data_reserva asc'),
+                'recursive' => -1,
+                'fields' => array('id', 'data_reserva', 'horario_reserva_1', 'horario_reserva_2', 'user_id')
+                ));
+        
+        //$reservas = $this->User->Reservation->formataHorarioLista($reservas);
+
+        return $reservas;
+    }
     
 
     public function beforeSave($options = array()) {

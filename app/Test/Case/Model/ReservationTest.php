@@ -116,6 +116,26 @@ class ReservationTest extends CakeTestCase{
 		$this->assertFalse($this->Reservation->validaDataHorario($reserva, 5));
 	}
 
+	function testConsultaListaReservasPorData(){
+
+		$data_consulta = array('data_reserva' => '23/07/2013', 'horario_reserva_1' => 1, 'horario_reserva_2' => 0);
+
+		$expected = array( 
+				array('Reservation' =>
+				array(
+		        	'id' => 1, 
+		        	'data_reserva' => '2013-07-23', 
+		        	'horario_reserva_1' => 1, 
+		        	'horario_reserva_2' => 0, 
+		        	'user_id' => 4
+		        	)));
+
+        $result = $this->Reservation->consultaListaReservasPorData($data_consulta);
+
+        $this->assertEquals($expected, $result);
+
+	}
+
 
 }
 

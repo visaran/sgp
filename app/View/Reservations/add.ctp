@@ -84,10 +84,22 @@
 
 <br>
 
-<?php echo $this->Form->submit('Reservar'); ?>
+<?php echo $this->Form->submit('Reservar',
+      array('name' => 'reservar')
+      ); ?>
+
+<?php echo $this->Form->submit('Consultar reservas', 
+      array('name' => 'consultar')
+      ); ?>
+
 <?php echo $this->Form->end(); ?>
 
-<button id="opener">Consultar reservas</button>
+<?php
+    echo $this->Html->link(
+        'Consultar Reservas',
+        array('controller' => 'Reservations', 'action' => 'list_view')
+    );
+?>
 
 </div>
 
