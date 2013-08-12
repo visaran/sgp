@@ -6,12 +6,9 @@
       height: 500,
       width: 900
       
-    });
- 
-    $( "#opener" ).click(function() {
+    });   
       $( "#dialog" ).dialog( "open" );
-    });
-  });
+  }); 
 
   </script>
 
@@ -27,12 +24,12 @@
         <th>Horário devolução</th>
       </tr>
 
-      <?php foreach ($users as $user): ?>
+      <?php  foreach ($reservas as $reserva): ?>
         <tr>
-          <td><?php echo $user['Reservation']['data_reserva']; ?> </td>
-          <td><?php echo $user['User']['nome']; ?> </td>
-          <td><?php echo $user['Reservation']['horario_reserva_1']; ?></td>
-          <td><?php echo $user['Reservation']['horario_reserva_2']; ?></td>
+          <td><?php echo $reserva['Reservation']['data_reserva']; ?> </td>
+          <td><?php echo $reserva['User']['nome']; ?> </td>
+          <td><?php echo $reserva['Reservation']['horario_reserva_1']; ?></td>
+          <td><?php echo $reserva['Reservation']['horario_reserva_2']; ?></td>
         </tr>
       <?php endforeach; ?>
       

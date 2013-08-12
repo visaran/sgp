@@ -1,7 +1,7 @@
 <?php
 class ReservationsController extends AppController {
 
-    public $uses = array('User');
+    public $uses = array('User', 'Reservation');
 
 	public function index() {
 
@@ -16,20 +16,20 @@ class ReservationsController extends AppController {
 
 	function add() {
 
-        debug($this->data);
+        //debug($this->data);
 
         if(isset($this->data['consultar'])){
 
-            $this->redirect(array('controller' => 'Reservations', 'action' => 'list_view', 
-                            'data_reserva' => $this->data['Reservation']['data_reserva']));
+            $reservas = $this->Reservation->consultaListaReservasPorData($this->data['Reservation']);
 
+            $this->set(compact(array('reservas')));
         }
 
         else{
 
             if (!empty($this->data)) {
                 $this->request->data['Reservation']['user_id'] = $this->Auth->user('id');
-                if ($this->User->Reservation->save($this->request->data)) {
+                if ($this->Reservation->save($this->request->data)) {
                     $this->Session->setFlash(__('<script> alert("Reserva realizada com sucesso!"); </script>', true));
                 }
                 elseif(empty($this->data)){
@@ -40,8 +40,10 @@ class ReservationsController extends AppController {
                 }
                 $this->request->data = null;
             }
-            
-            $users = $this->User->Reservation->find('all', 
+
+        }
+
+        $users = $this->Reservation->find('all', 
                 array(
                     'conditions' => array(
                         'Reservation.user_id' => $this->Auth->user('id'),
@@ -51,17 +53,15 @@ class ReservationsController extends AppController {
                     'order' => array('Reservation.data_reserva asc')
                     ));
             
-            $users = $this->User->Reservation->formataHorarioLista($users);
+            $users = $this->Reservation->formataHorarioLista($users);
 
             $this->set(compact(array('users')));
-
-        }
         
 	}
 
     function delete ($id){
 
-        $this->User->Reservation->delete($id);
+        $this->Reservation->delete($id);
         $this->redirect('add');
 
     }

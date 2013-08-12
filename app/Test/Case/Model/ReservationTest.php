@@ -121,14 +121,19 @@ class ReservationTest extends CakeTestCase{
 		$data_consulta = array('data_reserva' => '23/07/2013', 'horario_reserva_1' => 1, 'horario_reserva_2' => 0);
 
 		$expected = array( 
-				array('Reservation' =>
-				array(
-		        	'id' => 1, 
-		        	'data_reserva' => '2013-07-23', 
-		        	'horario_reserva_1' => 1, 
-		        	'horario_reserva_2' => 0, 
-		        	'user_id' => 4
-		        	)));
+						array('Reservation' =>
+							array(
+					        	'id' => 1, 
+					        	'data_reserva' => '2013-07-23', 
+					        	'horario_reserva_1' => 1, 
+					        	'horario_reserva_2' => 0, 
+					        	'user_id' => 1
+					        ),
+							'User' => array(
+									'nome' => 'Teste'
+							)
+						)
+					);
 
         $result = $this->Reservation->consultaListaReservasPorData($data_consulta);
 
