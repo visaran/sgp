@@ -33,7 +33,14 @@ class UsersController extends AppController {
 
     public function login() {
         if ($this->Auth->login()) {
-            $this->redirect($this->Auth->redirect());
+                if ($this->Auth->user('admin')){
+                    $this->redirect(array('controller' => 'administrators', 'action' => 'index'));  
+                }
+                else {
+                    $this->redirect(array('controller' => 'reservations', 'action' => 'add'));
+                }
+                
+            //$this->redirect($this->Auth->redirect());
         } 
 
         elseif (empty($this->data)) {
