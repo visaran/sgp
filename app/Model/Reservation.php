@@ -120,7 +120,7 @@ class Reservation extends AppModel{
                 'fields' => array('id', 'User.nome', 'data_reserva', 'horario_reserva_1', 'horario_reserva_2', 'user_id')
                 ));
         
-        //$reservas = $this->User->Reservation->formataHorarioLista($reservas);
+        $reservas = $this->User->Reservation->formataHorarioLista($reservas);
 
         return $reservas;
     }

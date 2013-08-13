@@ -1,8 +1,7 @@
 <?php
 class AdministratorsController extends AppController {
 
-    //public $uses = array('Reservation');
-    public $uses = array('User');
+    public $uses = array('User', 'Reservation');
 
     public function index() {
        
@@ -17,7 +16,7 @@ class AdministratorsController extends AppController {
 
     public function reservations_list(){
 
-        $users = $this->User->Reservation->find('all', 
+        $users = $this->Reservation->find('all', 
             array(
                 'conditions' => array(//'User.id' == 'Reservation.user_id',
                     'Reservation.data_reserva >=' => date('Y-m-d', strtotime('now')),  
@@ -26,7 +25,7 @@ class AdministratorsController extends AppController {
                 'order' => array('Reservation.data_reserva asc')
                 ));
         
-        $users = $this->User->Reservation->formataHorarioLista($users);
+        $users = $this->Reservation->formataHorarioLista($users);
 
         $this->set(compact(array('users')));
         

@@ -45,25 +45,18 @@
 <?php echo $this->Form->submit('Reservar',
       array('name' => 'reservar')
       ); ?>
-
+<br>
 <?php echo $this->Form->submit('Consultar reservas', 
       array('name' => 'consultar')
       ); ?>
 
 <?php echo $this->Form->end(); ?>
 
-<?php
-    echo $this->Html->link(
-        'Consultar Reservas',
-        array('controller' => 'Reservations', 'action' => 'list_view')
-    );
-?>
-
 </div>
 
 <h3 align="center"> Minhas Reservas </h3>
 
-<table class="table table-bordered">
+<table class="table table-bordered table-striped">
 
   <tr>
     <th>Data da reserva</th> 

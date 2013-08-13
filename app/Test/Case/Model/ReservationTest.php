@@ -125,8 +125,8 @@ class ReservationTest extends CakeTestCase{
 							array(
 					        	'id' => 1, 
 					        	'data_reserva' => '2013-07-23', 
-					        	'horario_reserva_1' => 1, 
-					        	'horario_reserva_2' => 0, 
+					        	'horario_reserva_1' => '19:25', 
+					        	'horario_reserva_2' => '21:05', 
 					        	'user_id' => 1
 					        ),
 							'User' => array(
