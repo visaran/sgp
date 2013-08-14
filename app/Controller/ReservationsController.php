@@ -5,18 +5,9 @@ class ReservationsController extends AppController {
 
 	public function index() {
 
-        /*if ($this->Auth->user('admin')) {
-            
-            $this->redirect(
-                array(
-                    'controller' => 'administrators', 'action' => 'index'));
-        }*/
-
 	}
 
 	function add() {
-
-        //debug($this->data);
 
         if(isset($this->data['consultar'])){
 
@@ -69,7 +60,6 @@ class ReservationsController extends AppController {
     function list_view(){
         
         $this->Reservation->consultaListaReservasPorData();
-
 
     }
 

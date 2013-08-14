@@ -4,13 +4,6 @@ class AdministratorsController extends AppController {
     public $uses = array('User', 'Reservation');
 
     public function index() {
-       
-       /* if (!$this->Auth->user('admin')) {
-            
-            $this->redirect(
-                array(
-                    'controller' => 'reservations', 'action' => 'index'));
-        }*/
 
     }
 

@@ -32,6 +32,5 @@ class ReservationFixture extends CakeTestFixture {
         	'user_id' => 2
         )
     );
-
 }
 ?>

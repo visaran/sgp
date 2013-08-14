@@ -39,8 +39,6 @@ class UsersController extends AppController {
                 else {
                     $this->redirect(array('controller' => 'reservations', 'action' => 'add'));
                 }
-                
-            //$this->redirect($this->Auth->redirect());
         } 
 
         elseif (empty($this->data)) {

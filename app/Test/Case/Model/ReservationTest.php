@@ -138,10 +138,7 @@ class ReservationTest extends CakeTestCase{
         $result = $this->Reservation->consultaListaReservasPorData($data_consulta);
 
         $this->assertEquals($expected, $result);
-
 	}
-
-
 }
 
 ?>
