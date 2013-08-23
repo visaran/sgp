@@ -130,7 +130,7 @@ class ReservationTest extends CakeTestCase{
 					        	'user_id' => 1
 					        ),
 							'User' => array(
-									'nome' => 'Teste'
+									'nome' => 'João da Silva'
 							)
 						)
 					);

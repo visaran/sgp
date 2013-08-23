@@ -37,7 +37,7 @@ class User extends AppModel {
                 //'conditions' => $professor,
                 'order' => array('nome asc'),
                 'recursive' => 0,
-                'fields' => array('id', 'username', 'nome', 'email')
+                'fields' => array('id', 'username', 'nome', 'email','admin')
                 ));
 
         return $professores;

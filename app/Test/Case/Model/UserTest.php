@@ -12,17 +12,15 @@ class UserTest extends CakeTestCase {
 	
 	function testGerenciaProfessores(){
 
-			//$professor = array('username' => '000654', 'nome' => 'João da Silva', 'email' => 'joao@fae.br');
-
-			$expected = array( 
+			$expected =array(
 							array('User' =>
 								array(
-						        	'id' => '2', 
+						        	'id' => '1', 
 						        	'username' => '000654', 
 						        	'nome' => 'João da Silva', 
 						        	'email' => 'joao@fae.br',
 						        	'admin' => 0
-						        ),
+						       	),
 							)
 						);
 
