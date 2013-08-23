@@ -12,7 +12,8 @@ class UserFixture extends CakeTestFixture {
         	'id' => 2, 
         	'username' => '000654', 
         	'nome' => 'João da Silva', 
-        	'email' => 'joao@fae.br'
+        	'email' => 'joao@fae.br',
+            'admin' => 0
         )
     );
 }

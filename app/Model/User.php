@@ -34,7 +34,7 @@ class User extends AppModel {
 
         $professores = $this->find('all', 
             array(
-                'conditions' => $professores,
+                //'conditions' => $professor,
                 'order' => array('nome asc'),
                 'recursive' => 0,
                 'fields' => array('id', 'username', 'nome', 'email')
