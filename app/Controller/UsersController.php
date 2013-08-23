@@ -18,7 +18,6 @@ class UsersController extends AppController {
         if ($this->request->is('post')) {
             $this->User->create();
             if ($this->User->save($this->request->data)) {
-                //$this->Session->setFlash(__('O usuário foi salvo com sucesso!'));
                 $this->Session->setFlash(__('<script> alert("Usuario salvo com sucesso!"); </script>', true));
                 $this->redirect(array('action' => 'add'));
             } else {
@@ -29,7 +28,30 @@ class UsersController extends AppController {
 
     public function manager() {
 
-         $this->User->gerenciaProfessores();
+        $professores =  $this->User->gerenciaProfessores();
+       
+        $this->set(compact(array('professores')));
+
+    }
+
+    public function delete ($id){
+
+        $this->User->delete($id);
+        $this->redirect(array(
+                            'controller' => 'users', 'action' => 'manager'));
+
+    }
+
+    function edit ($id){
+
+        if (empty($this->data)) {
+            $this->data = $this->User->find('first', array('conditions' => array('id' => $id)));
+            
+        }
+        else{
+                $this->User->save($this->data);
+                $this->redirect('manager');
+        }
 
     }
 
