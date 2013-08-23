@@ -29,5 +29,19 @@ class User extends AppModel {
         }
         return true;
     }
+
+    public function gerenciaProfessores(){
+
+        $professores = $this->find('all', 
+            array(
+                'conditions' => $professores,
+                'order' => array('nome asc'),
+                'recursive' => 0,
+                'fields' => array('id', 'username', 'nome', 'email')
+                ));
+
+        return $professores;
+    }
+
 }
 ?>

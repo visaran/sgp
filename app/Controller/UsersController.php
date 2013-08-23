@@ -18,13 +18,21 @@ class UsersController extends AppController {
         if ($this->request->is('post')) {
             $this->User->create();
             if ($this->User->save($this->request->data)) {
-                $this->Session->setFlash(__('O usuário foi salvo com sucesso!'));
+                //$this->Session->setFlash(__('O usuário foi salvo com sucesso!'));
+                $this->Session->setFlash(__('<script> alert("Usuario salvo com sucesso!"); </script>', true));
                 $this->redirect(array('action' => 'add'));
             } else {
-                $this->Session->setFlash(__('The user could not be saved. Please, try again.'));
+               $this->Session->setFlash(__('<script> alert("O usuário não pode ser salvo."); </script>', true));
             }
         }
     }
+
+    public function manager() {
+
+         $this->User->gerenciaProfessores();
+
+    }
+
 
     public function beforeFilter() {
         parent::beforeFilter();
@@ -36,18 +44,18 @@ class UsersController extends AppController {
                 if ($this->Auth->user('admin')){
                     $this->redirect(array('controller' => 'administrators', 'action' => 'index'));  
                 }
-                elseif ((date('Y-m-d', strtotime('now'))) == (date('Y-m-d', strtotime('Saturday'))) 
-                        OR
-                        (date('Y-m-d', strtotime('now'))) == (date('Y-m-d', strtotime('Sunday')))) {
-                    $this->redirect(array('controller' => 'reservations', 'action' => 'add'));
+                else//if ((date('Y-m-d', strtotime('now'))) == (date('Y-m-d', strtotime('Saturday'))) 
+                     //   OR
+                      //  (date('Y-m-d', strtotime('now'))) == (date('Y-m-d', strtotime('Sunday')))) {
+                    {$this->redirect(array('controller' => 'reservations', 'action' => 'add'));
                 }
-                elseif(empty($this->data)){
+                /*elseif(empty($this->data)){
                     return;
                 }
                 else {
                     $this->Session->setFlash(__('<script> alert("O sistema só está disponível nos finais de semana."); </script>', true));
                     $this->request->data = null;
-                }
+                }*/
         } 
 
         elseif (empty($this->data)) {

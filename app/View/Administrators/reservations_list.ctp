@@ -1,7 +1,7 @@
 <h3 align='center'>Lista semanal de reservas de projetores</h3>
 
 
-<table class="table table-bordered">
+<table class="table table-bordered table-striped">
 
 	<tr>
 		<th>Data da reserva</th> 
