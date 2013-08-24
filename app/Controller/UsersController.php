@@ -36,8 +36,13 @@ class UsersController extends AppController {
                 if ($this->Auth->user('admin')){
                     $this->redirect(array('controller' => 'administrators', 'action' => 'index'));  
                 }
-                else {
+                elseif ((date('Y-m-d', strtotime('now'))) == (date('Y-m-d', strtotime('Saturday'))) 
+                        OR
+                        (date('Y-m-d', strtotime('now'))) == (date('Y-m-d', strtotime('Sunday')))) {
                     $this->redirect(array('controller' => 'reservations', 'action' => 'add'));
+                }
+                else {
+                     $this->Session->setFlash(__('<script> alert("O sistema só está disponível nos finais de semana."); </script>', true));
                 }
         } 
 

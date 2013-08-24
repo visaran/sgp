@@ -7,7 +7,7 @@
   $(function() {
     $( "#datepicker" ).datepicker({
         dateFormat: 'dd/mm/yy',
-        maxDate: '15d',
+        maxDate: '14d',
         minDate: '0',
         beforeShowDay: $.datepicker.noWeekends
       });
