@@ -69,7 +69,7 @@ class UsersController extends AppController {
                 elseif ((date('Y-m-d', strtotime('now'))) == (date('Y-m-d', strtotime('Saturday'))) 
                         OR
                         (date('Y-m-d', strtotime('now'))) == (date('Y-m-d', strtotime('Sunday')))) {
-                    {$this->redirect(array('controller' => 'reservations', 'action' => 'add'));
+                    $this->redirect(array('controller' => 'reservations', 'action' => 'add'));
                 }
                 elseif(empty($this->data)){
                     return;
