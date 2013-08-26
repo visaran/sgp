@@ -57,11 +57,5 @@ class ReservationsController extends AppController {
 
     }
 
-    /*function list_view(){
-        
-        $this->Reservation->consultaListaReservasPorData();
-
-    }*/
-
 }
 ?>

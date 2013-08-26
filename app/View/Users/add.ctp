@@ -20,10 +20,6 @@
             'label' => 'Nome do Professor:'));
 		echo $this->Form->input('email', array(
             'label' => 'E-mail:'));
-		/*echo $this->Form->input('admin', 
-			array(
-				'type' => 'checkbox',
-				'label'=> 'Administrador'));*/
     ?>
     </fieldset>
 <?php echo $this->Form->end(__('Salvar'));?>
