@@ -49,7 +49,7 @@ class AppController extends Controller {
 
     var $permissoes = array(
         'users' => array('logout' => true),
-        'reservations' => array('add' => true)
+        'reservations' => array('add' => true, 'delete' => true)
     );
 
     public function beforeFilter() {
