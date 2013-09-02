@@ -16,7 +16,7 @@ class Reservation extends AppModel{
         'data_reserva' => array(
 
             'valida_horario' => array(
-                'rule' => array('validaDataHorario', 2),
+                'rule' => array('validaDataHorario', 20),
                 'message' => ''
             ),
             'data_valida' => array(
