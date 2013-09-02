@@ -6,20 +6,19 @@ App::uses('ComponentCollection', 'Controller');
 App::uses('AccessComponent', 'Controller/Component');
 
 class FakeController extends Controller {
-	public function loggedOut($test) {
-		$isAdmin = false;
-		$fakeAuth = $test->getMock('Auth', array('user'));
-        $fakeAuth->expects($test->any())
-             ->method('user')
-             ->will($test->returnCallback($isAdmin));
-        $this->Auth = $fakeAuth;
+	public function loggedOutOrLoggedAsTeacher($test) {
+		$this->doLoggin($test, false);
 	}
 
-	public function loginAsAdmin($test) {
-		$isAdmin = true;
-		$fakeAuth->expects($test->any())
+	public function loggedAsAdmin($test) {
+		$this->doLoggin($test, true);
+	}
+	
+	private function doLoggin($test, $isAdmin) {
+	    $this->Auth = $test->getMock('Auth', array('user'));
+		$this->Auth->expects($test->any())
              ->method('user')
-             ->will($test->returnCallback($isAdmin));
+             ->will($test->returnValue($isAdmin));
 	}
 
 	public function simulateAccess($controller, $action) {
@@ -42,29 +41,36 @@ class AccessComponentTest extends CakeTestCase {
         $CakeResponse = new CakeResponse();
         $this->Controller = new FakeController($this, $CakeRequest, $CakeResponse);
         $this->AccessComponent->startup($this->Controller);
-        $this->Controller->loggedOut($this);
     }
 	
 	function testShouldAccessLoginLoggedOut() {
+	    $this->Controller->loggedOutOrLoggedAsTeacher($this);
+	    $this->Controller->simulateAccess('users', 'login');
 		$this->assertTrue($this->AccessComponent->granted());
 	}
 
 	function testTeacherShouldAccessReservationsAdd() {
+	    $this->Controller->loggedOutOrLoggedAsTeacher($this);
 		$this->Controller->simulateAccess('reservations', 'add');
 		$this->assertTrue($this->AccessComponent->granted());
 	}
 
 	function testTeacherShouldntAccessUsersAdd() {
-		$this->Controller->simulateAccess('users', 'add');
+		$this->Controller->loggedOutOrLoggedAsTeacher($this);
+        $this->Controller->simulateAccess('users', 'add');
 		$this->assertFalse($this->AccessComponent->granted());
 	}
 
 	function testAdminShouldAccessUsersAdd() {
-		//$this->Controller->loginAsAdmin($this);
+		$this->Controller->loggedAsAdmin($this);
+		$this->Controller->simulateAccess('users', 'add');
+		$this->assertTrue($this->AccessComponent->granted());
 	}
 
 	function testAdminShouldAccessUsersManager() {
-		
+		$this->Controller->loggedAsAdmin($this);
+		$this->Controller->simulateAccess('users', 'manager');
+		$this->assertTrue($this->AccessComponent->granted());
 	}
 
 }
