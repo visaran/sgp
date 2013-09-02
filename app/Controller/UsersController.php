@@ -62,10 +62,18 @@ class UsersController extends AppController {
 
     public function login() {
         if ($this->Auth->login()) {
+
                 if ($this->Auth->user('admin')){
                     $this->redirect(array('controller' => 'administrators', 'action' => 'index'));  
                 }
-                elseif (true){ 
+                elseif ((date('Y-m-d', strtotime('now'))) == (date('Y-m-d', strtotime('Saturday')))
+                        OR
+                        ((date('Y-m-d', strtotime('now'))) == (date('Y-m-d', strtotime('Sunday'))))) {
+                    $this->redirect(array('controller' => 'reservations', 'action' => 'add'));
+                }
+                elseif ((date('H:i:s', strtotime('now'))) <= (date('H:i:s', strtotime('5pm')))
+                        OR
+                        ((date('H:i:s', strtotime('now'))) >= (date('H:i:s', strtotime('11pm'))))) { 
                     $this->redirect(array('controller' => 'reservations', 'action' => 'add'));
                 }
                 elseif(empty($this->data)){

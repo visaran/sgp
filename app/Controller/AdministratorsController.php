@@ -11,10 +11,8 @@ class AdministratorsController extends AppController {
 
         $users = $this->Reservation->find('all', 
             array(
-                'conditions' => array(//'User.id' == 'Reservation.user_id',
-                    'Reservation.data_reserva >=' => date('Y-m-d', strtotime('now')),  
-                    'AND' => array(  
-                    'Reservation.data_reserva <=' => date('Y-m-d', strtotime('next Friday')))),
+                'conditions' => array(
+                    'Reservation.data_reserva =' => date('Y-m-d', strtotime('now'))),
                 'order' => array('Reservation.data_reserva asc')
                 ));
         
