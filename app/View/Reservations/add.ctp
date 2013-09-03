@@ -15,10 +15,11 @@
 
   </script>
 
-<div class='container' align='center'>
-  <?php 
-      echo $this->Html->link('Sair', array('controller' => 'users', 'action'=>'logout')); 
-  ?>
+<div class="container" align="right">
+<?php echo $this->Html->link('Alterar senha', array('controller' => 'users', 'action'=>'change_pass')); ?>
+ &nbsp;  
+ &nbsp;
+<?php echo $this->Html->link(__('Sair'), array('controller' => 'users', 'action'=>'logout')); ?>
 </div>
 
 

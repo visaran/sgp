@@ -55,6 +55,24 @@ class UsersController extends AppController {
 
     }
 
+    public function change_pass() {
+        $this->User->recursive = 0;
+ 
+        if (!empty($this->data)) {
+ 
+            $this->User->id = $this->Session->read('Auth.User.id');
+ 
+            if ($this->User->save($this->data)) {
+                $this->Session->setFlash(__('<script> alert("Senha alterada com sucesso!"); </script>', true));
+                $this->redirect(array('controller' => 'reservations', 'action' => 'add'));
+            } else {
+                $this->Session->setFlash(__('<script> alert("As duas senhas não conferem! Tente novamente."); </script>', true));
+            }
+        }
+ 
+        $this->data = $this->User->read(null, $this->Session->read('Auth.User.id'));
+    }
+
 
     public function beforeFilter() {
         parent::beforeFilter();
@@ -80,7 +98,7 @@ class UsersController extends AppController {
                     return;
                 }
                 else {
-                    $this->Session->setFlash(__('<script> alert("O sistema só está disponível nos finais de semana."); </script>', true));
+                    $this->Session->setFlash(__('<script> alert("O sistema está indisponível neste horário! Tente novamente antes das 17hrs ou depois das 23hrs."); </script>', true));
                     $this->request->data = null;
                 }
         }

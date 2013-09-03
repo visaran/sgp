@@ -18,6 +18,32 @@ class User extends AppModel {
             'required' => array(
                 'rule' => array('notEmpty'),
                 'message' => 'Digite a senha!'
+            ),
+            'Match passwords'=>array(
+                'rule' => 'matchPasswords',
+                'message' => 'Senha/Confirmação da Senha não são iguais'
+            )
+        ),
+
+        'old_password' => array(
+            'notempty' => array(
+                'rule' => array('notempty'),
+                'message' => 'Campo obrigatório',
+                //'allowEmpty' => false,
+                'required' => false,
+                //'last' => false, // Stop validation after this rule
+                //'on' => 'create', // Limit validation to 'create' or 'update' operations
+            )
+        ),  
+
+        'confirm_password' => array(
+            'notempty' => array(
+                'rule' => array('notempty'),
+                'message' => 'Campo obrigatório',
+                //'allowEmpty' => false,
+                'required' => false,
+                //'last' => false, // Stop validation after this rule
+                //'on' => 'create', // Limit validation to 'create' or 'update' operations
             )
         )
     );
@@ -43,6 +69,36 @@ class User extends AppModel {
         $this->set(compact(array('professores')));
 
         return $professores;
+    }
+
+    public function matchPasswords($data) {
+        
+        //if($this->checkPassword($data)) {
+            if($data['password'] == $this->data['User']['confirm_password']) {
+                return true;
+            }
+            $this->invalidate('confirm_password', 'matchPasswords');
+            return false;
+
+
+        //}
+    }
+ 
+ 
+    public function checkPassword($data) {
+        $usuario = $this->find('first', array(
+            'conditions' => array(
+                'User.id' => $this->data['User']['id'],
+                'User.password' => AuthComponent::password($this->data['User']['old_password'])
+            )
+        ));
+ 
+        if($usuario) {
+            return true;
+        }
+ 
+        $this->invalidate('old_password', 'matchPasswords');
+        return false;       
     }
 
 }

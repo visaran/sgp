@@ -11,6 +11,7 @@ class UserFixture extends CakeTestFixture {
         array(
         	'id' => 1, 
         	'username' => '000654', 
+            'password' => '123',
         	'nome' => 'João da Silva', 
         	'email' => 'joao@fae.br',
             'admin' => 0

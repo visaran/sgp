@@ -48,7 +48,7 @@ class AppController extends Controller {
     );
 
     var $permissoes = array(
-        'users' => array('logout' => true),
+        'users' => array('logout' => true, 'change_pass' => true),
         'reservations' => array('add' => true, 'delete' => true)
     );
 

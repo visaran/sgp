@@ -14,8 +14,10 @@
         <br>
         <?php echo $this->Form->input('username', array(
             'label' => 'Registro do Professor:'));
-        echo $this->Form->input('password', array(
-            'label' => 'Senha:'));
+        echo $this->Form->input('password', array('label'=>'Senha', 'type' => 'password', 'value' => ''));
+        
+        echo $this->Form->input('confirm_password', array('label'=>'Confirmação da senha', 'type' => 'password'));
+        
         echo $this->Form->input('nome', array(
             'label' => 'Nome do Professor:'));
 		echo $this->Form->input('email', array(
