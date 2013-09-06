@@ -45,6 +45,17 @@ class User extends AppModel {
                 //'last' => false, // Stop validation after this rule
                 //'on' => 'create', // Limit validation to 'create' or 'update' operations
             )
+        ),
+
+        'limite_proj' => array(
+            'numeric' => array(
+                'rule' => 'numeric',
+                'message' => 'Apenas números são permitidos'
+             ),
+            'maxlength' => array(
+                'rule' => array('maxLength', '3'),
+                'message' => 'Máximo de 3 dígitos'
+            ),
         )
     );
 
@@ -63,7 +74,7 @@ class User extends AppModel {
                 //'conditions' => $professores,
                 'order' => array('nome asc'),
                 'recursive' => 0,
-                'fields' => array('id', 'username', 'nome', 'email','admin')
+                'fields' => array('id', 'username', 'nome', 'email','admin', 'limite_proj')
                 ));
 
         $this->set(compact(array('professores')));

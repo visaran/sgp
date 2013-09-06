@@ -137,5 +137,19 @@ class Reservation extends AppModel{
             $queryData['conditions']['data_reserva'] = implode('-',array_reverse(explode('/',$queryData['conditions']['data_reserva'])));
         return $queryData;
     }
+
+    public function changeProjectorsLimit($limite){
+
+        if($limite < 0){
+            return false;
+        }
+        else{
+            return true;
+        }
+
+    }
+
+
+
 } 
 ?>

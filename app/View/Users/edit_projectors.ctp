@@ -10,17 +10,12 @@
 <hr>
     <fieldset>
         <legend>
-            <?php echo __('<h1>Alterar dados do professor</h1>'); ?>
+            <?php echo __('<h1>Alterar limite de Projetores</h1>'); ?>
         </legend>
         <br>
-        <?php echo $this->Form->input('username', array(
-            'label' => 'Registro do Professor:'));
-        echo $this->Form->input('nome', array(
-            'label' => 'Nome do Professor:'));
-		echo $this->Form->input('email', array(
-            'label' => 'E-mail:'));
-        echo $this->Form->input('limite_proj', array(
-            'label' => 'Limite de projetores:'));
+        <?php echo $this->Form->input('limite_proj', array(
+            'label' => 'Quantidade de projetores:',
+            'type' => 'text'));
     ?>
     </fieldset>
 <?php echo $this->Form->end(__('Salvar'));?>

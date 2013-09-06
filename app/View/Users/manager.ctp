@@ -13,6 +13,7 @@
     <th>Registro</th> 
     <th>Nome</th>
     <th>E-mail</th>
+    <td>Total de projetores</th>
     <th>Excluir Professor</th>
     <th>Editar Professor</th>
   </tr>
@@ -22,6 +23,7 @@
       <td><?php echo $professor['User']['username']; ?> </td>
       <td><?php echo $professor['User']['nome']; ?> </td>
       <td><?php echo $professor['User']['email']; ?></td>
+      <td><?php echo $professor['User']['limite_proj']; ?></td>
       <td><?php echo $this->Html->link('Deletar', array('action'=>'delete', $professor['User']['id'])); ?></td>
       <td><?php echo $this->Html->link('Editar', array('action'=>'edit', $professor['User']['id'])); ?></td>
     </tr>
