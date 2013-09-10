@@ -10,7 +10,7 @@ class UserTest extends CakeTestCase {
         $this->User = ClassRegistry::init('User');
     }
 	
-	function testGerenciaProfessores(){
+	function testGerenciaUsuarios(){
 
 			$expected =array(
 							array('User' =>
@@ -21,8 +21,20 @@ class UserTest extends CakeTestCase {
 						        	'email' => 'joao@fae.br',
 						        	'admin' => 0,
 						        	'limite_proj' => '12'
-						       	),
+						       	)
+							),
+							array('User' =>
+								array(
+						            'id' => '2', 
+						            'username' => 'admin', 
+						            'nome' => 'João da Silva', 
+						            'email' => 'joao@fae.br',
+						            'admin' => true,
+						            'limite_proj' => '1'
+						        )
 							)
+
+
 						);
 
 	        $result = $this->User->gerenciaProfessores();

@@ -16,7 +16,7 @@ class Reservation extends AppModel{
         'data_reserva' => array(
 
             'valida_horario' => array(
-                'rule' => array('validaDataHorario', 20),
+                'rule' => array('validaDataHorario'),
                 'message' => ''
             ),
             'data_valida' => array(
@@ -43,7 +43,11 @@ class Reservation extends AppModel{
         ),
     );
 
-    public function validaDataHorario($reserva, $limite){
+    public function validaDataHorario($reserva){
+
+        $limite = $this->User->find('first', array('conditions' => array('admin' => true), 'fields' => 'limite_proj', 'recursive' => -1));
+        
+        $limite = $limite['User']['limite_proj'];
 
         $reserva = $this->data['Reservation'];
         

@@ -117,10 +117,10 @@ class UsersController extends AppController {
         $this->redirect($this->Auth->logout());
     }
 
-    function edit_projectors ($id){
+    function edit_projectors (){
 
         if (empty($this->data)) {
-            $this->data = $this->User->find('first', array('conditions' => array('id' => $id)));
+            $this->data = $this->User->find('first', array('conditions' => array('admin' => true)));
             
         }
         else{
