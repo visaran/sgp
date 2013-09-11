@@ -125,7 +125,7 @@ class UsersController extends AppController {
         }
         else{
                 $this->User->save($this->data);
-                $this->redirect('manager');
+                $this->redirect(array('controller' => 'administrators', 'action'=>'index'));
         }
 
     }

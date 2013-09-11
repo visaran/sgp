@@ -142,17 +142,6 @@ class Reservation extends AppModel{
         return $queryData;
     }
 
-    public function changeProjectorsLimit($limite){
-
-        if($limite < 0){
-            return false;
-        }
-        else{
-            return true;
-        }
-
-    }
-
 
 
 } 

@@ -40,12 +40,6 @@ class UserTest extends CakeTestCase {
 	        $result = $this->User->gerenciaProfessores();
 
 	        $this->assertEquals($expected, $result);
-	}	
-
-	function testPasswordMatch() {
-		/*$data = array('password' => '123');
-		$this->User->set(array('User' => $data));
-		$this->assertTrue($this->User->matchPasswords($data));*/
 	}
 
 }

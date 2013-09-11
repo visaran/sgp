@@ -139,25 +139,7 @@ class ReservationTest extends CakeTestCase{
 
         $this->assertEquals($expected, $result);
 	}
-
-	function testProjectorsLimitShouldNotBeNegative(){
-
-		$limite = -1;
-		$this->assertFalse($this->Reservation->changeProjectorsLimit($limite));
-
-	}
-
-
-	function testProjectorsLimitShouldBePositive(){
-
-		$limite = 1;
-		$this->assertTrue($this->Reservation->changeProjectorsLimit($limite));
-
-	}
-
 	
-
-
 }
 
 ?>
