@@ -7,10 +7,11 @@ class User extends AppModel {
             'className' => 'Reservation'
             )
         );
+
     public $validate = array(
-            'username' => array(
+        'username' => array(
             'required' => array(
-             'rule' => array('notEmpty'),
+                'rule' => array('notEmpty'),
                 'message' => 'Digite o registro!'
             )
         ),
@@ -18,35 +19,19 @@ class User extends AppModel {
             'required' => array(
                 'rule' => array('notEmpty'),
                 'message' => 'Digite a senha!'
+            )
+        ),
+        'confirm_password' => array(
+            'notempty' => array(
+                'rule' => array('notempty'),
+                'message' => 'Campo obrigatório',
+                'required' => false,
             ),
             'Match passwords'=>array(
                 'rule' => 'matchPasswords',
                 'message' => 'Senha/Confirmação da Senha não são iguais'
             )
         ),
-
-        'old_password' => array(
-            'notempty' => array(
-                'rule' => array('notempty'),
-                'message' => 'Campo obrigatório',
-                //'allowEmpty' => false,
-                'required' => false,
-                //'last' => false, // Stop validation after this rule
-                //'on' => 'create', // Limit validation to 'create' or 'update' operations
-            )
-        ),  
-
-        'confirm_password' => array(
-            'notempty' => array(
-                'rule' => array('notempty'),
-                'message' => 'Campo obrigatório',
-                //'allowEmpty' => false,
-                'required' => false,
-                //'last' => false, // Stop validation after this rule
-                //'on' => 'create', // Limit validation to 'create' or 'update' operations
-            )
-        ),
-
         'limite_proj' => array(
             'numeric' => array(
                 'rule' => 'numeric',
@@ -71,7 +56,6 @@ class User extends AppModel {
 
         $professores = $this->find('all', 
             array(
-                //'conditions' => $professores,
                 'order' => array('nome asc'),
                 'recursive' => 0,
                 'fields' => array('id', 'username', 'nome', 'email','admin', 'limite_proj')
@@ -82,35 +66,9 @@ class User extends AppModel {
         return $professores;
     }
 
-    public function matchPasswords($data) {
-        
-        //if($this->checkPassword($data)) {
-            if($data['password'] == $this->data['User']['confirm_password']) {
-                return true;
-            }
-            $this->invalidate('confirm_password', 'matchPasswords');
-            return false;
-
-
-        //}
+    public function matchPasswords() {
+        $senhas = $this->data['User'];
+        return ($senhas['password'] == $senhas['confirm_password']);
     }
- 
- 
-    public function checkPassword($data) {
-        $usuario = $this->find('first', array(
-            'conditions' => array(
-                'User.id' => $this->data['User']['id'],
-                'User.password' => AuthComponent::password($this->data['User']['old_password'])
-            )
-        ));
- 
-        if($usuario) {
-            return true;
-        }
- 
-        $this->invalidate('old_password', 'matchPasswords');
-        return false;       
-    }
-
 }
 ?>
