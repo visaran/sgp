@@ -27,7 +27,8 @@
     echo $this->Form->input('data_reserva', array(
         'label' => 'Data:',
         'type'=>'text',
-        'id'=>'datepicker'));
+        'id'=>'datepicker',
+        'readonly' => 'true'));
 ?>
 <p text-align="center">
 <?php
