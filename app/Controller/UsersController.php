@@ -78,6 +78,8 @@ class UsersController extends AppController {
         parent::beforeFilter();
     }
 
+    /*
+
     public function login() {
         if ($this->Auth->login()) {
 
@@ -109,6 +111,26 @@ class UsersController extends AppController {
 
         else {
             $this->Session->setFlash(__('<script> alert("Registro ou senha inválidos, tente novamente."); </script>', true));
+            $this->request->data = null;
+        }
+    }
+
+    */
+
+    public function login(){
+        if ($this->Auth->login()) {
+            if ($this->Auth->user('admin')) {
+                $this->redirect(array('controller' => 'administrators', 'action' => 'index'));   
+            }
+            else {
+                $this->redirect(array('controller' => 'reservations', 'action' => 'add'));
+            }
+            
+        }
+        elseif (empty($this->data)) {
+            return;
+        } else {   
+            $this->Session->setFlash(__('<script> alert("Usuário ou senha inválidos."); </script>', true));
             $this->request->data = null;
         }
     }
