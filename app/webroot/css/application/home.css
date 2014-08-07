@@ -1,0 +1,27 @@
+.space-50{
+    margin-top: 50px;
+}
+.alert{
+    margin: 0!important;
+}
+.btn.btn-file {
+    height: 35px!important;
+    overflow: hidden!important;
+    position: relative!important;
+    width: auto;
+}
+.width-heigth-120 {
+    height: 120px;
+    width: 120px;
+}
+.text-danger {
+    float: left;
+}
+textarea.form-control{
+    resize: none;
+    height: 110px;
+}
+.input-group > .text-danger {
+    display: table-caption;
+    float: none;
+}

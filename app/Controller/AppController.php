@@ -58,6 +58,9 @@ class AppController extends Controller {
         $eAdmin = $this->Auth->user('admin');
         $professorTemPermissao = isset($this->permissoes[$this->request->params['controller']][$this->request->params['action']]);
 
+        $userName = $this->Auth->user('nome');
+        $this->set('nomeUser', $userName);
+
         if (!$estaNaLogin AND !$eAdmin AND !$professorTemPermissao) {
             $this->Session->setFlash(__('<script> alert("Permissão negada."); </script>', true));
             $this->redirect(array('controller' => 'reservations', 'action' => 'add'));

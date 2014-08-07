@@ -1,4 +1,23 @@
-<h2 align="center"> Tela de Reserva de Projetores </h2>
+<?php 
+    $reservar = array(
+    'label' => 'Reservar',
+    'class' => 'btn btn-success btn-lg btn-block'
+    );
+
+    $consultar = array(
+    'label' => 'Reservar',
+    'class' => 'btn btn-primary btn-lg btn-block'
+    );
+?>
+
+<style type="text/css">
+  .btns_add{
+    width: 20%;
+    min-width: 137px;
+  }
+</style>
+
+<h2 align="center">Reserva de Projetores </h2>
 
 <div class="container">
 <?php echo $this->Form->create('Reservation'); ?>
@@ -15,42 +34,35 @@
 
   </script>
 
-<div class="container" align="right">
-<?php echo $this->Html->link('Alterar senha', array('controller' => 'users', 'action'=>'change_pass')); ?>
- &nbsp;  
- &nbsp;
-<?php echo $this->Html->link(__('Sair'), array('controller' => 'users', 'action'=>'logout')); ?>
-</div>
-
-
 <?php
     echo $this->Form->input('data_reserva', array(
-        'label' => 'Data:',
+        'label' => '<i class="fa fa-calendar"></i> Data:',
         'type'=>'text',
         'id'=>'datepicker',
         'readonly' => 'true'));
 ?>
 <p text-align="center">
-<?php
+<?php  
     echo $this->Form->input('horario_reserva_1', array(
-        'label' => 'Primeiro horário (19:25 às 21:05)',
+        'label' => '<i class="fa fa-clock-o"></i>  Primeiro horário (19:25 às 21:05)',
         'type'=>'checkbox'));
     echo $this->Form->input('horario_reserva_2', array(
-        'label' => 'Segundo horário (21:15 às 22:55)',
+        'label' => '<i class="fa fa-clock-o"></i> Segundo horário (21:15 às 22:55)',
         'type'=>'checkbox'
     ));
 ?>
 </p>
 
 <br>
-
-<?php echo $this->Form->submit('Reservar',
-      array('name' => 'reservar')
-      ); ?>
+<div class="btns_add">
+<?php 
+    echo $this->Form->submit('Reservar', $reservar);
+?>
 <br>
-<?php echo $this->Form->submit('Consultar reservas', 
-      array('name' => 'consultar')
-      ); ?>
+<?php 
+    echo $this->Form->submit('Consultar reservas',$consultar);
+?>
+</div>
 
 <?php echo $this->Form->end(); ?>
 

@@ -118,6 +118,9 @@ class UsersController extends AppController {
     */
 
     public function login(){
+
+        $this->layout = 'login/default';
+
         if ($this->Auth->login()) {
             if ($this->Auth->user('admin')) {
                 $this->redirect(array('controller' => 'administrators', 'action' => 'index'));   

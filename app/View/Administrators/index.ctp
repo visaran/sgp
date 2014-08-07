@@ -3,15 +3,64 @@
 <h1> Menu do Administrador </h1>
 
 <hr>
-<?php echo $this->Html->link('Gerar lista semanal', array('action'=>'reservations_list')); ?>
+<?php
+  echo $this->Html->link(
+     '<i class="fa fa-file-text"></i> Gerar lista semanal',
+      array(
+          'action'=>'reservations_list',
+      ),
+      array(
+          'escape'=>false,
+      )
+  );
+?>
 <br>
 <hr>
-<?php echo $this->Html->link('Cadastrar Professores', array('controller' => 'users', 'action'=>'add')); ?>
+<?php
+  echo $this->Html->link(
+     '<i class="fa fa-group"></i> Cadastrar Professores',
+      array(
+		'controller' => 'users', 
+		'action'=>'add'      ),
+      array(
+          'escape'=>false,
+      )
+  );
+?>
 <hr>
-<?php echo $this->Html->link('Gerenciar Professores', array('controller' => 'users', 'action'=>'manager')); ?>
+<?php
+  echo $this->Html->link(
+     '<i class="fa fa- fa-gears"></i> Gerenciar Professores',
+      array(
+		'controller' => 'users', 
+		'action'=>'manager'),
+      array(
+          'escape'=>false,
+      )
+  );
+?>
 <hr>
-<?php echo $this->Html->link('Gerenciar Número de Projetores', array('controller' => 'users',
-	 'action'=>'edit_projectors')); ?>
+<?php
+  echo $this->Html->link(
+     '<i class="fa fa-video-camera"></i> Gerenciar Número de Projetores',
+      array(
+		'controller' => 'users',
+		'action'=>'edit_projectors'),
+      array(
+          'escape'=>false,
+      )
+  );
+?>	 
 <hr>
-<?php echo $this->Html->link(__('Sair'), array('controller' => 'users', 'action'=>'logout')); ?>
+<?php
+  echo $this->Html->link(
+     '<i class="fa fa-power-off"></i> Sair',
+      array(
+		'controller' => 'users', 
+		'action'=>'logout'),
+      array(
+          'escape'=>false,
+      )
+  );
+?>	
 </div>
