@@ -1,12 +1,14 @@
 <?php 
     $reservar = array(
     'label' => 'Reservar',
-    'class' => 'btn btn-success btn-lg btn-block'
+    'class' => 'btn btn-success btn-lg btn-block',
+    'name' => 'reservar'
     );
 
     $consultar = array(
-    'label' => 'Reservar',
-    'class' => 'btn btn-primary btn-lg btn-block'
+    'label' => 'Consultar',
+    'class' => 'btn btn-primary btn-lg btn-block',
+    'name' => 'consultar'
     );
 ?>
 

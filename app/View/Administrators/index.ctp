@@ -5,7 +5,7 @@
 <hr>
 <?php
   echo $this->Html->link(
-     '<i class="fa fa-file-text"></i> Gerar lista semanal',
+     '<i class="fa fa-file-text"></i> Lista de reservas ',
       array(
           'action'=>'reservations_list',
       ),

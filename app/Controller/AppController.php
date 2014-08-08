@@ -56,6 +56,8 @@ class AppController extends Controller {
         parent::beforeFilter();
         $estaNaLogin = ($this->request->params['controller'] == 'users' AND $this->request->params['action'] == 'login');
         $eAdmin = $this->Auth->user('admin');
+        $this->set('eAdmin', $eAdmin);
+
         $professorTemPermissao = isset($this->permissoes[$this->request->params['controller']][$this->request->params['action']]);
 
         $userName = $this->Auth->user('nome');

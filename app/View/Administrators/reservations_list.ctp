@@ -1,4 +1,9 @@
-<h3 align='center'>Lista semanal de reservas de projetores</h3>
+<h3 align='center'>Lista de reservas de projetores</h3>
+
+
+<a href="#" onclick="window.print();" style="float: right;"><i class="fa fa-print"></i> Imprimir Lista</a>
+
+
 
 
 <table class="table table-bordered table-striped">

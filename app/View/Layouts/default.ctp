@@ -5,18 +5,16 @@
         <title>Unifae - SGP</title>
         <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
         <?php
-			        echo $this->Html->css('jquery-ui.css');
-					echo $this->Html->css('/development-bundle/themes/smoothness/jquery-ui.css');
-					echo $this->Html->css('bootstrap.min');
-			        echo $this->Html->css('font-awesome.min');
-					echo $this->Html->css('AdminLTE');
-					echo $this->Html->css('ionicons.min');
+            echo $this->Html->css('jquery-ui.css');
+    		echo $this->Html->css('/development-bundle/themes/smoothness/jquery-ui.css');
+    		echo $this->Html->css('bootstrap.min');
+            echo $this->Html->css('font-awesome.min');
+    		echo $this->Html->css('AdminLTE');
+    		echo $this->Html->css('ionicons.min');
 
-					echo $this->Html->script('jquery-1.9.1.js');
-					echo $this->Html->script('jquery-ui.js');
-					echo $this->Html->script('bootstrap.min.js');
-
-					$userName = '';
+    		echo $this->Html->script('jquery-1.9.1.js');
+    		echo $this->Html->script('jquery-ui.js');
+    		echo $this->Html->script('bootstrap.min.js');
         ?>
 
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -26,15 +24,16 @@
           <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
         <![endif]-->
     </head>
-    <body class="skin-blue">
-        
-        
-       
+    <body class="skin-blue">       
         <!-- header logo: style can be found in header.less -->
         <header class="header">
-            <a href="#" class="logo">
+            <?php 
+                $url = Router::url('/', true); 
+                $tipo = ($eAdmin == 0)? 'reservations/add':'administrators' ;
+            ?>
+            <a href="<?php echo $url.$tipo; ?>" class="logo">
                 <!-- Add the class icon to your logo image or logo icon to add the margining -->
-                   <img alt="sgp" src="<?php echo Router::url('/', true);?>img/sgp100.png" class="img-responsive" style="margin:0 auto; width:65px; " >     
+                   <img alt="sgp" src="<?php echo Router::url('/', true);?>img/sgp100.png" class="img-responsive" style="margin:0 auto; width:65px;" >     
             </a>
             <!-- Header Navbar: style can be found in header.less -->
             <nav class="navbar navbar-static-top" role="navigation">

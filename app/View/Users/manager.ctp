@@ -1,8 +1,6 @@
 <div class="container" align="right">
 <?php echo $this->Html->link('Voltar ao menu', array('controller' => 'administrators', 'action'=>'index')); ?>
- &nbsp;  
- &nbsp;
-<?php echo $this->Html->link(__('Sair'), array('controller' => 'users', 'action'=>'logout')); ?>
+
 </div>
 
 <h2 align="center"> Gerenciamento de Professores </h2>
