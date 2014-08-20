@@ -13,11 +13,6 @@
     )
 ?>
 
-<div class="container" align="right">
-<?php echo $this->Html->link('Voltar ao menu', array('controller' => 'administrators', 'action'=>'index')); ?>
-
-</div>
-
  <div class="box-header">
            <h1>Alterar dados do professor</h1>
         </div><!-- /.box-header -->
